@@ -33,12 +33,16 @@ app.use('/login', express.static(path.join(__dirname, 'pages/login')));
 // delete cookie
 app.use('/delete-cookie', function(req, res, next) {
   res.clearCookie('jwt');
-  res.redirect('/login');
+  res.redirect('/login/');
 });
 
 // home page
 app.use('/home', auth, express.static(path.join(__dirname, 'pages/home')));
-app.use('*', auth, express.static(path.join(__dirname, 'pages/home')));
+
+// redirect everything else to home page
+app.use('*', function(req, res, next) {
+    res.redirect('/home');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
