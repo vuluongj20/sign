@@ -77,7 +77,7 @@ The code in this repository is complete. You can deploy it and have the same app
 
 A few things to do before deploying:
 * Change port: the app is currently set to listen on port ```31000```. You can change this to whatever port you wish in ```back/bin/www```, ```line 15```.
-* Update JWT settings: there are two things you should update for JWT - expiration time and issuer. Do that in ```back/routes/users.js```, ```lines 33 and 34```. The cookie's expiration time should also be equal to that of the token. You can change that in the same file, ```lines 39, 43, and 47``` (the ```maxAge``` fields).
+* Update JWT settings: there are two things you should update for JWT - expiration time and issuer. Do that in ```back/routes/users.js```, ```lines 33 and 34```. The cookie's expiration time should be equal to that of the token. You can change that in the same file, ```lines 39, 43, and 47``` (the ```maxAge``` fields). The intercepting middleware must recognize the same issuer as in the cookie. Update the same issuer value to ```back/mid/auth.js```, ```line 14```.
 * Set the public-private key pair: this JWT instance uses public-key cryptography and requires a set of public-private keys for signing. An example key set is used but needs to be changed as they are public and thus defeats the point of crypto. Update the keys in ```back/data/login/private.key``` and ```back/data/login/public.key```.
 * Initialize Nodemailer: the app contains code for Nodemailer, but since an active email account is needed, it is unused and commented out in the original version. Head to ```back/routes/users.js```, look for the commented sections, and either modify them, or delete them altogether if you have no need for Nodemailer.
 *
