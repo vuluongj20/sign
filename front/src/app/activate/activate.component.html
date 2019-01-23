@@ -1,0 +1,11 @@
+<div *ngIf="invalidPage" class="fin box center">
+  <h1>Oops...</h1>
+  <p>This link is not valid.</p>
+</div>
+<div *ngIf="expiredPage" class="fin box center">
+  <h1>Too late!</h1>
+  <p>This link has expired.</p>
+  <a (click)="resendLink()" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">Resend link</a>
+</div>
+<app-done *ngIf="doneMes" [mes]="doneMes"></app-done>
+<app-error *ngIf="resErr" [status]="resErr"></app-error>

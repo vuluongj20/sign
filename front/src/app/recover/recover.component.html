@@ -1,0 +1,12 @@
+<div [@slide] *ngIf="inputPage" class="box center">
+  <p>{{mes}}</p>
+  <input [class.red]="err" type="email" [formControl]="forgotEmail">
+  <button type="button" (click)="sendEmail($event)" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+    Done
+    <div class="loader center" *ngIf="loading">
+      <div class="wheel"></div>
+    </div>
+  </button>
+</div>
+<app-done *ngIf="doneMes" [mes]="doneMes"></app-done>
+<app-error *ngIf="resErr" [status]="resErr"></app-error>

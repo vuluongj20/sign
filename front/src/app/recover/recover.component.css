@@ -1,0 +1,8 @@
+.box {
+  padding: 30px 60px;
+  width: 80%;
+  max-width: 300px;
+}
+button {
+  margin-top: 12px;
+}

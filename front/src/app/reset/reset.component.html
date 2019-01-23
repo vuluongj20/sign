@@ -1,0 +1,19 @@
+<div *ngIf="resetPage" class="box center">
+  <p>{{resetMes}}</p>
+  <form [formGroup]="resetGroup">
+    <input [class.red]="newPassErr" formControlName="newPass" placeholder="Password" type="password">
+    <input [class.red]="newPass2Err" formControlName="newPass2" placeholder="Confirm Password" type="password">
+    <button (click)="reset($event)" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+      Reset
+      <div class="loader center" *ngIf="loading">
+        <div class="wheel"></div>
+      </div></button>
+  </form>
+</div>
+<div *ngIf="expiredPage" class="fin box center">
+  <h1>Too late!</h1>
+  <p>This link has expired.</p>
+  <a (click)="resendLink()" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">Resend link</a>
+</div>
+<app-done *ngIf="doneMes" [mes]="doneMes"></app-done>
+<app-error *ngIf="resErr" [status]="resErr"></app-error>

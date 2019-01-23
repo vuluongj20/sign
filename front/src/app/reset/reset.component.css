@@ -1,0 +1,18 @@
+h1 {
+  font-size: 80px;
+  margin-bottom: 0px;
+}
+.box {
+  width: 400px;
+  animation-name: fade;
+  animation-duration: 300ms;
+  animation-timing-function: ease;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
