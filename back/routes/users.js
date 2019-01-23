@@ -31,7 +31,7 @@ router.post('/login', async function (req, res, next) {
           var tokenSettings = {
             algorithm: 'RS256',
             expiresIn: 129600,
-            issuer: 'Lore',
+            issuer: 'Unknown',
             subject: email
           };
           if (user.type === 'admin') {
