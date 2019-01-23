@@ -1,0 +1,12 @@
+[
+  {
+    "email": "test@test.com",
+    "pass": "test",
+    "type": "norm",
+    "active": true,
+    "activateRand": "",
+    "activateUntil": "",
+    "resetRand": "",
+    "resetUntil": ""
+  }
+]
