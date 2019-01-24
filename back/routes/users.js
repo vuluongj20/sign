@@ -30,21 +30,21 @@ router.post('/login', async function (req, res, next) {
           var privateKey = await readFile('./data/login/private.key', 'utf8');
           var tokenSettings = {
             algorithm: 'RS256',
-            expiresIn: 129600,
+            expiresIn: 120,
             issuer: 'Unknown',
             subject: email
           };
           if (user.type === 'admin') {
             var token = jwt.sign({account: email, type: 'admin'}, privateKey, tokenSettings);
-            res.cookie('jwt', token, { maxAge: 129600, httpOnly: true, secure: true });
+            res.cookie('jwt', token, { maxAge: 120000, httpOnly: true, secure: true });
             res.json({authorized: true, active: true, type: 'admin'});
           } else if (user.type === 'norm'){
             var token = jwt.sign({account: email, type: 'norm'}, privateKey, tokenSettings);
-            res.cookie('jwt', token, { maxAge: 129600, httpOnly: true, secure: true });
+            res.cookie('jwt', token, { maxAge: 120000, httpOnly: true, secure: true });
             res.json({authorized: true, active: true, type: 'norm'});
           } else if (user.type === 'demo') {
             var token = jwt.sign({account: email, 'type': 'demo'}, privateKey, tokenSettings);
-            res.cookie('jwt', token, { maxAge: 129600, httpOnly: true, secure: true });
+            res.cookie('jwt', token, { maxAge: 120000, httpOnly: true, secure: true });
             res.json({authorized: true, active: true, type: 'demo'});
           }
         } else {
