@@ -66,10 +66,10 @@ export class NewComponent implements OnInit {
   }
   new($event) {
     if (this.newGroup.valid) {
-      var button = $event.currentTarget;
-      button.classList.add('loading');
-      this.loading = true;
       if (this.newGroup.get('pass').value === this.newGroup.get('pass2').value) {
+        var button = $event.currentTarget;
+        button.classList.add('loading');
+        this.loading = true;
         this.newPassErr = false;
         this.newPass2Err = false;
         var newMem = this.newGroup.value;
