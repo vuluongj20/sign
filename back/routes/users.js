@@ -103,7 +103,6 @@ router.post('/reset', async function (req, res, next) {
       if (user.resetRand === rand) {
         userFound = true;
         if (user.resetUntil > Date.now()) {
-          userFound = true;
           user.pass = newPass;
           user.resetUntil = '';
           user.resetRand = '';
@@ -130,7 +129,7 @@ router.post('/new', async function (req, res, next) {
     var users = JSON.parse(await readFile('./data/login/users.json'));
     for (let user of users) {
       if (user.email === email) {
-        already = true;
+        userExists = true;
         res.json({userExists: true});
       }
     }
