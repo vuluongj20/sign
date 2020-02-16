@@ -16,7 +16,7 @@ The front end uses Angular and has 5 different pages:
 * Password Reset.
 
 ## Try it out
-You can try a demo of Sign [here](https://sign.vuluong.me/login). This is a more self-contained version and does not have Nodemailer, so no verification email will be sent. You can still create new accounts and request for password resets. The server will add the accounts, and generate password reset codes. But without any email verification, the accounts will remain unverified, and the codes will be unused.
+You can try a demo of Sign [here](https://sign-vl.herokuapp.com/login/). This is a more self-contained version and does not have Nodemailer, so no verification email will be sent. You can still create new accounts and request for password resets. The server will add the accounts, and generate password reset codes. But without any email verification, the accounts will remain unverified, and the codes will be unused.
 
 You can use this account:
 * Email: test@test.com
