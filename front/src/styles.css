@@ -275,10 +275,9 @@ button.loading {
     position: absolute;
     top: 1.2em;
     left: 1.4em;
-    font-size: 0.8em;
   }
   .box:not(.link-bottom) {
-    padding-top: 1.6em;
+    padding-top: 1.2em;
     padding-bottom: 0;
   }
   .box.link-bottom {

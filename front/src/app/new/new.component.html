@@ -44,15 +44,15 @@
       </svg>
     </button>
   </form>
-  <div class="outer-link-wrap" style="--order: 3">
-    <a
-      class="float-up"
-      routerLink="/">
-      <svg class="back-arrow" viewBox="0 0 5 10">
-          <path stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round" stroke-linecap="round" d="M4 1 1 5 4 9"></path>
-      </svg>
-      Back to Sign in</a>
-  </div>
+</div>
+<div class="outer-link-wrap" style="--order: 3">
+  <a
+    class="float-up"
+    routerLink="/">
+    <svg class="back-arrow" viewBox="0 0 5 10">
+        <path stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round" stroke-linecap="round" d="M4 1 1 5 4 9"></path>
+    </svg>
+    Back to Sign in</a>
 </div>
 <app-done *ngIf="doneMes" [mes]="doneMes"></app-done>
 <app-error *ngIf="resErr" [status]="resErr"></app-error>
