@@ -368,7 +368,7 @@ var DataService = /** @class */ (function () {
         this.http = http;
     }
     DataService.prototype.post = function (link, data) {
-        return this.http.post('http://localhost:8080/api/users/' + link, data);
+        return this.http.post('/api/users/' + link, data);
     };
     DataService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
