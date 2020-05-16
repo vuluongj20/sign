@@ -1,37 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DataService } from '../data.service';
-import { trigger, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  animations: [
-    trigger('fade', [
-      transition(':enter', [
-        style({
-          opacity: 0
-        }),
-        animate('300ms ease')
-      ]),
-      transition(':leave', [
-        animate('100ms ease', style({
-          opacity: 0,
-          transform: 'translate(-65%, -50%)'
-        }))
-      ])
-    ])
-  ]
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private dataService: DataService
   ) { }
 
   // Message on top
-  mes: string = 'Sign in below to access content.';
+  mes: string = 'Welcome to Sign!';
   // Input field errors, true makes the input field go red.
   emailErr: boolean = false;
   emailErr2: boolean = false;
@@ -49,17 +32,9 @@ export class LoginComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     pass: ['', Validators.required]
   });
-  // Touch events to replace :hover events on touch devices
-  onTouchStart($event) {
-    $event.stopPropagation();
-    $event.currentTarget.classList.add('touch');
-  }
-  onTouchEnd($event) {
-    $event.stopPropagation();
-    $event.currentTarget.classList.remove('touch');
-  }
   login($event) {
     if (this.userGroup.valid) {
+      console.log('hey')
       var user = this.userGroup.value;
       var button = $event.currentTarget;
       button.classList.add('loading');
@@ -97,11 +72,12 @@ export class LoginComponent implements OnInit {
           this.emailErr = true;
         }
         if (this.userGroup.get('email').errors.email) {
-          this.mes = 'Make sure you typed in an email.';
+          this.mes = 'Invalid email.';
           this.emailErr2 = true;
         }
       } else {
         this.emailErr = false;
+        this.emailErr2 = false;
       }
       if (this.userGroup.get('pass').errors) {
         this.mes = 'Forgetting something?';
@@ -111,8 +87,4 @@ export class LoginComponent implements OnInit {
       }
     }
   }
-
-  ngOnInit() {
-  }
-
 }

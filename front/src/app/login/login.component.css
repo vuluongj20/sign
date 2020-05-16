@@ -1,24 +1,21 @@
-a {
+:host {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 2.4em;
+}
+.forgot-link {
   display: block;
-  color: #cacaca;
-  font-size: 16px;
-  text-decoration: none;
+  font-size: 0.9em;
+  margin-bottom: 0.8em;
 }
-@media (hover: hover) {
-  a:hover {
-    text-decoration: underline solid #dadada;
-  }
-}
-@media (hover: none) {
-  a.touch {
-    text-decoration: underline solid #dadada;
-  }
-}
-@media only screen and (max-width: 767px) {
-  a {
-    line-height: 1.8;
-  }
-  .misc {
-    margin-top: 15px;
-  }
+.outer-link-wrap.bottom {
+  top: auto;
+  bottom: 1.2em;
+  left: 50%;
+  transform: translateX(-50%);
 }

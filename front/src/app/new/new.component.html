@@ -1,16 +1,58 @@
-<div [@slide] *ngIf="newPage" class="box center">
-  <p>{{newMes}}</p>
-  <form [formGroup]="newGroup">
-    <input [class.red]="newemailErr" type="email" placeholder="Email" formControlName="email">
-    <input [class.red]="newPassErr" type="password" placeholder="Password" formControlName="pass">
-    <input [class.red]="newPassErr" type="password" placeholder="Comfirm password" formControlName="pass2">
-    <button class="long" type="submit" (click)="new($event)" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+<div *ngIf="newPage" class="box">
+  <h2 class="header">
+    <span class="mask-span">
+      <span class="word" style="--order: 0">Sign </span>
+    </span>
+    <span class="mask-span">
+      <span class="word" style="--order: 1">up</span>
+    </span>
+  </h2>
+  <p class="message float-up" style="--order: 2">{{newMes}}</p>
+  <form [formGroup]="newGroup" autocomplete="off">
+    <input
+      class="email-input float-up"
+      style="--order: 3"
+      autocomplete="none"
+      [class.red]="newemailErr"
+      type="email"
+      placeholder="Email"
+      formControlName="email">
+    <input
+      class="password-input float-up"
+      style="--order: 4"
+      autocomplete="new-password"
+      [class.red]="newPassErr"
+      type="password"
+      placeholder="Password"
+      formControlName="pass">
+    <input
+      class="confirm-password-input float-up"
+      style="--order: 5"
+      autocomplete="new-password"
+      [class.red]="newPassErr"
+      type="password"
+      placeholder="Comfirm password"
+      formControlName="pass2">
+    <button
+      class="confirm-button float-up"
+      style="--order: 6"
+      type="submit"
+      (click)="new($event)">
       Create account
-      <div class="loader center" *ngIf="loading">
-        <div class="wheel"></div>
-      </div>
+      <svg *ngIf="loading" class="center" width="1.2em" height="1.2em">
+        <circle class="loader-circle"/>
+      </svg>
     </button>
   </form>
+  <div class="outer-link-wrap" style="--order: 3">
+    <a
+      class="float-up"
+      routerLink="/">
+      <svg class="back-arrow" viewBox="0 0 5 10">
+          <path stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round" stroke-linecap="round" d="M4 1 1 5 4 9"></path>
+      </svg>
+      Back to Sign in</a>
+  </div>
 </div>
 <app-done *ngIf="doneMes" [mes]="doneMes"></app-done>
 <app-error *ngIf="resErr" [status]="resErr"></app-error>

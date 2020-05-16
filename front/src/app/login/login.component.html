@@ -1,19 +1,47 @@
-<div [@fade] *ngIf="loginPage" class="box center">
-  <h1>Hi!</h1>
-  <p>{{mes}}</p>
+<div *ngIf="loginPage" class="box link-bottom">
+  <h2 class="header">
+    <span class="mask-span">
+      <span class="word" style="--order: 0">Sign </span>
+    </span>
+    <span class="mask-span">
+      <span class="word" style="--order: 1">in</span>
+    </span>
+  </h2>
+  <p class="message float-up" style="--order: 2">{{mes}}</p>
   <form [formGroup]="userGroup">
-    <input [class.red]="emailErr || emailErr2" type="email" placeholder="Email" formControlName="email">
-    <input [class.red]="passErr" type="password" placeholder="Password" formControlName="pass">
-    <button (click)="login($event)" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+    <input
+      class="email-input float-up"
+      style="--order: 3"
+      [class.red]="emailErr || emailErr2"
+      type="email"
+      placeholder="Email"
+      formControlName="email">
+    <input
+      class="password-input float-up"
+      style="--order: 4"
+      [class.red]="passErr"
+      type="password"
+      placeholder="Password"
+      formControlName="pass">
+    <a
+      class="forgot-link float-up"
+      style="--order: 5"
+      routerLink="/recover">Forgot your password?</a>
+    <button
+      class="confirm-button float-up"
+      style="--order: 6"
+      (click)="login($event)">
       Sign in
-      <div class="loader center" *ngIf="loading">
-        <div class="wheel"></div>
-      </div>
+      <svg *ngIf="loading" class="center" width="1.2em" height="1.2em">
+        <circle class="loader-circle"/>
+      </svg>
     </button>
   </form>
-  <div class="misc">
-    <a routerLink="/recover" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">Forgot password?</a>
-    <a routerLink="/new" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">Want a new account?</a>
-  </div>
+</div>
+<div class="outer-link-wrap bottom" style="--order: 5">
+  <p class="float-up">Don't have an account? </p>
+  <a
+    class="float-up"
+    routerLink="/new">Sign up now.</a>
 </div>
 <app-error *ngIf="resErr" [status]="resErr"></app-error>

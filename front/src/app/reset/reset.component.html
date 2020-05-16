@@ -1,19 +1,48 @@
 <div *ngIf="resetPage" class="box center">
   <p>{{resetMes}}</p>
   <form [formGroup]="resetGroup">
-    <input [class.red]="newPassErr" formControlName="newPass" placeholder="Password" type="password">
-    <input [class.red]="newPass2Err" formControlName="newPass2" placeholder="Confirm Password" type="password">
-    <button (click)="reset($event)" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+    <input
+      [class.red]="newPassErr"
+      formControlName="newPass"
+      placeholder="New password"
+      type="password"
+      autocomplete="new-password">
+    <input
+      [class.red]="newPass2Err"
+      formControlName="newPass2"
+      placeholder="Confirm new password"
+      type="password"
+      autocomplete="new-password">
+    <button (click)="reset($event)">
       Reset
-      <div class="loader center" *ngIf="loading">
-        <div class="wheel"></div>
-      </div></button>
+      <svg *ngIf="loading" class="center" width="1.2em" height="1.2em">
+        <circle class="loader-circle"/>
+      </svg>
+    </button>
   </form>
 </div>
+<div *ngIf="invalidPage" class="fin box center">
+  <h2 class="header">
+    <span class="mask-span">
+      <span class="word" style="--order: 0">Oh </span>
+    </span>
+    <span class="mask-span">
+      <span class="word" style="--order: 0">no!</span>
+    </span>
+  </h2>
+  <p>This link is not valid.</p>
+</div>
 <div *ngIf="expiredPage" class="fin box center">
-  <h1>Too late!</h1>
+  <h2 class="header">
+    <span class="mask-span">
+      <span class="word" style="--order: 0">Too </span>
+    </span>
+    <span class="mask-span">
+      <span class="word" style="--order: 0">late!</span>
+    </span>
+  </h2>
   <p>This link has expired.</p>
-  <a (click)="resendLink()" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">Resend link</a>
+  <a (click)="resendLink()">Send a new link</a>
 </div>
 <app-done *ngIf="doneMes" [mes]="doneMes"></app-done>
 <app-error *ngIf="resErr" [status]="resErr"></app-error>

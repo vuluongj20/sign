@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { VisualsComponent } from './visuals/visuals.component';
 import { LoginComponent } from './login/login.component';
 import { RecoverComponent } from './recover/recover.component';
 import { NewComponent } from './new/new.component';
@@ -17,6 +18,7 @@ import { DoneComponent } from './done/done.component';
 @NgModule({
   declarations: [
     AppComponent,
+    VisualsComponent,
     LoginComponent,
     RecoverComponent,
     NewComponent,

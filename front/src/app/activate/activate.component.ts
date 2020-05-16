@@ -1,37 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
-import { trigger, style, transition, animate } from '@angular/animations';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-activate',
   templateUrl: './activate.component.html',
-  styleUrls: ['./activate.component.css'],
-  animations: [
-    trigger('fade', [
-      transition(':enter', [
-        style({
-          opacity: 0
-        }),
-        animate('300ms ease')
-      ])
-    ]),
-    trigger('slide', [
-      transition(':enter', [
-        style({
-          opacity: 0,
-          transform: 'translate(-35%, -50%)'
-        }),
-        animate('300ms ease')
-      ]),
-      transition(':leave', [
-        animate('100ms ease', style({
-          opacity: 0,
-          transform: 'translate(-65%, -50%)'
-        }))
-      ])
-    ])
-  ]
+  styleUrls: ['./activate.component.css']
 })
 export class ActivateComponent implements OnInit {
 
@@ -50,15 +24,6 @@ export class ActivateComponent implements OnInit {
   // Views, true means that view is shown
   expiredPage: boolean = false;
   invalidPage: boolean = false;
-  // Touch events to replace :hover events on touch devices
-  onTouchStart($event) {
-    $event.stopPropagation();
-    $event.currentTarget.classList.add('touch');
-  }
-  onTouchEnd($event) {
-    $event.stopPropagation();
-    $event.currentTarget.classList.remove('touch');
-  }
   // Resend link function
   resendLink() {
     this.route.params.subscribe(params => {
@@ -66,7 +31,7 @@ export class ActivateComponent implements OnInit {
       this.dataService.post('resend', {type: 'activate', rand: rand}).subscribe(
         () => {
           this.expiredPage = false;
-          this.doneMes = ['Resent! Check your mailbox.'];
+          this.doneMes = ['Sent! Check your mailbox.'];
         },
         err => {
           this.resErr = err.status;
@@ -74,7 +39,6 @@ export class ActivateComponent implements OnInit {
       )
     })
   }
-
   ngOnInit() {
     this.route.params.subscribe(params => {
       var rand = params.rand;
@@ -97,5 +61,4 @@ export class ActivateComponent implements OnInit {
       );
     });
   }
-
 }

@@ -1,10 +1,25 @@
-<div class="fin box center">
-  <div class="circle">
-    <div class="line-1"></div>
-    <div class="line-2"></div>
-  </div>
+<div class="box">
+  <svg class="check" viewBox="0 0 100 100">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle class="circle"/>
+      <path class="line" d="M20 60 45 80 78 30" />
+    </g>
+  </svg>
   <div>
-    <p class="slide-1">{{mes[0]}}</p>
-    <a *ngIf="mes[1]" href="/login/" class="slide-2" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">{{mes[1]}}</a>
+    <p class="text float-up" style="--order: 4">{{mes[0]}}</p>
+    <a
+      *ngIf="mes[1]"
+      href="/login/"
+      class="link float-up"
+      style="--order: 5">{{mes[1]}}</a>
+  </div>
+  <div class="outer-link-wrap" style="--order: 4">
+    <a
+      class="float-up"
+      routerLink="/">
+      <svg class="back-arrow" viewBox="0 0 5 10">
+          <path stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round" stroke-linecap="round" d="M4 1 1 5 4 9"></path>
+      </svg>
+      Back to Sign in</a>
   </div>
 </div>

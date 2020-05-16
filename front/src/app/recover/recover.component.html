@@ -1,12 +1,29 @@
-<div [@slide] *ngIf="inputPage" class="box center">
-  <p>{{mes}}</p>
-  <input [class.red]="err" type="email" [formControl]="forgotEmail">
-  <button type="button" (click)="sendEmail($event)" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+<div *ngIf="inputPage" class="box">
+  <h2 class="header">
+    <span class="mask-span">
+      <span class="word" style="--order: 0">Password </span>
+    </span>
+    <span class="mask-span">
+      <span class="word" style="--order: 1">reset</span>
+    </span>
+  </h2>
+  <p class="message float-up" style="--order: 2">{{mes}}</p>
+  <input class="email-input float-up" style="--order: 3" [class.red]="err" type="email" [formControl]="forgotEmail" placeholder="Email">
+  <button class="confirm-button float-up" style="--order: 4" type="button" (click)="sendEmail($event)">
     Done
-    <div class="loader center" *ngIf="loading">
-      <div class="wheel"></div>
-    </div>
+    <svg *ngIf="loading" class="center" width="1.2em" height="1.2em">
+      <circle class="loader-circle"/>
+    </svg>
   </button>
+  <div class="outer-link-wrap" style="--order: 3">
+    <a
+      class="float-up"
+      routerLink="/">
+      <svg class="back-arrow" viewBox="0 0 5 10">
+          <path stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round" stroke-linecap="round" d="M4 1 1 5 4 9"></path>
+      </svg>
+      Back to Sign in</a>
+  </div>
 </div>
 <app-done *ngIf="doneMes" [mes]="doneMes"></app-done>
 <app-error *ngIf="resErr" [status]="resErr"></app-error>

@@ -1,0 +1,64 @@
+<div class="visual-wrap" [ngClass]="currentRoute">
+  <div class="padding"></div>
+  <div class="header-wrap">
+    <h1 [@fade] *ngIf="currentRoute === 'home'" class="header center">
+      <span class="mask-span">
+        <span class="word" style="--order: 0">Why, </span>
+      </span>
+      <span class="mask-span">
+        <span class="word" style="--order: 1">hello </span>
+      </span>
+      <span class="mask-span">
+        <span class="word" style="--order: 2">there</span>
+      </span>
+    </h1>
+    <h1 [@fade] *ngIf="currentRoute === 'new'" class="header center">
+      <span class="mask-span">
+        <span class="word" style="--order: 0">Nice </span>
+      </span>
+      <span class="mask-span">
+        <span class="word" style="--order: 1">meeting </span>
+      </span>
+      <span class="mask-span">
+        <span class="word" style="--order: 2">you</span>
+      </span>
+    </h1>
+    <h1 [@fade] *ngIf="currentRoute === 'recover'" class="header center">
+      <span class="mask-span">
+        <span class="word" style="--order: 0">We've </span>
+      </span>
+      <span class="mask-span">
+        <span class="word" style="--order: 1">got </span>
+      </span>
+      <span class="mask-span">
+        <span class="word" style="--order: 2">you</span>
+      </span>
+    </h1>
+  </div>
+  <div class="shapes-outer-wrap">
+    <div class="shapes-wrap" [ngClass]="loaded && currentRoute">
+      <div class="rs red square"></div>
+      <div class="bc blue circle double"></div>
+      <div class="rc red circle"></div>
+      <div class="gs green square"></div>
+      <div class="yq quadrant">
+        <div class="quadrant-mask">
+          <div class="quadrant-circle yellow"></div>
+        </div>
+      </div>
+      <div class="rq quadrant">
+        <div class="quadrant-mask">
+          <div class="quadrant-circle red"></div>
+        </div>
+      </div>
+      <div class="yc yellow circle"></div>
+      <div class="bq quadrant">
+        <div class="quadrant-mask">
+          <div class="quadrant-circle blue"></div>
+        </div>
+      </div>
+      <div class="gc green circle double"></div>
+      <div class="ys yellow square double"></div>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,25 @@
 <div *ngIf="invalidPage" class="fin box center">
-  <h1>Oops...</h1>
-  <p>This link is not valid.</p>
+  <h2 class="header">
+    <span class="mask-span">
+      <span class="word" style="--order: 0">Oh </span>
+    </span>
+    <span class="mask-span">
+      <span class="word" style="--order: 1">no!</span>
+    </span>
+  </h2>
+  <p class="text float-up" style="--order: 3">This link is not valid. Make sure you pasted in the right one.</p>
 </div>
 <div *ngIf="expiredPage" class="fin box center">
-  <h1>Too late!</h1>
-  <p>This link has expired.</p>
-  <a (click)="resendLink()" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">Resend link</a>
+  <h2 class="header">
+    <span class="mask-span">
+      <span class="word" style="--order: 0">Too </span>
+    </span>
+    <span class="mask-span">
+      <span class="word" style="--order: 1">late!</span>
+    </span>
+  </h2>
+  <p class="text float-up" style="--order: 3">This link has expired.</p>
+  <a class="link float-up" style="--order: 4" (click)="resendLink()" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">Send a new link</a>
 </div>
 <app-done *ngIf="doneMes" [mes]="doneMes"></app-done>
 <app-error *ngIf="resErr" [status]="resErr"></app-error>

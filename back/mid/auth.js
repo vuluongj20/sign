@@ -7,11 +7,12 @@ const readFile = util.promisify(fs.readFile);
 module.exports = async function(req, res, next) {
   try {
     var cookie = req.cookies.jwt;
+    console.log(cookie)
     if (cookie) {
       var publicKey = await readFile('./data/login/public.key', 'utf8');
       var verified = await jwt.verify(cookie, publicKey, {
         algorithm: ['RS256'],
-        issuer: 'Unknown'
+        issuer: 'Vu Luong'
       });
       if (verified) {
         res.locals.auth = {type: verified.type, account: verified.account};

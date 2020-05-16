@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DataService } from '../data.service';
@@ -8,7 +8,7 @@ import { DataService } from '../data.service';
   templateUrl: './reset.component.html',
   styleUrls: ['./reset.component.css'],
 })
-export class ResetComponent implements OnInit {
+export class ResetComponent {
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +31,7 @@ export class ResetComponent implements OnInit {
   resendRes: any;
   // Views, true means that view is shown
   resetPage: boolean = true;
+  invalidPage: boolean = false;
   expiredPage: boolean = false;
   // Loader icon, true means icon is shown
   loading: boolean = false;
@@ -39,15 +40,6 @@ export class ResetComponent implements OnInit {
     newPass: ['', Validators.required],
     newPass2: ['', Validators.required]
   });
-  // Touch events to replace :hover events on touch devices
-  onTouchStart($event) {
-    $event.stopPropagation();
-    $event.currentTarget.classList.add('touch');
-  }
-  onTouchEnd($event) {
-    $event.stopPropagation();
-    $event.currentTarget.classList.remove('touch');
-  }
   // Functions
   resendLink() {
     this.route.params.subscribe(params => {
@@ -55,7 +47,7 @@ export class ResetComponent implements OnInit {
       this.dataService.post('resend', {type: 'reset', rand: rand}).subscribe(
         () => {
           this.expiredPage = false;
-          this.doneMes = ['Resent! Check your mailbox'];
+          this.doneMes = ['Sent! Check your mailbox'];
         },
         err => {
           this.expiredPage = false;
@@ -116,8 +108,4 @@ export class ResetComponent implements OnInit {
       }
     }
   }
-
-  ngOnInit() {
-  }
-
 }

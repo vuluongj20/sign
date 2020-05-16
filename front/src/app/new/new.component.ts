@@ -1,31 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DataService } from '../data.service';
-import { trigger, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-new',
   templateUrl: './new.component.html',
-  styleUrls: ['./new.component.css'],
-  animations: [
-    trigger('slide', [
-      transition(':enter', [
-        style({
-          opacity: 0,
-          transform: 'translate(-35%, -50%)'
-        }),
-        animate('300ms ease')
-      ]),
-      transition(':leave', [
-        animate('100ms ease', style({
-          opacity: 0,
-          transform: 'translate(-65%, -50%)'
-        }))
-      ])
-    ])
-  ]
+  styleUrls: ['./new.component.css']
 })
-export class NewComponent implements OnInit {
+export class NewComponent {
 
   constructor(
     private fb: FormBuilder,
@@ -33,7 +15,7 @@ export class NewComponent implements OnInit {
   ) { }
 
   // Text at the top
-  newMes: string = 'Type in the new account details.';
+  newMes: string = 'Become a member now.';
   comMes: string = '';
   // Error code for error page
   resErr: number;
@@ -55,15 +37,6 @@ export class NewComponent implements OnInit {
     pass: ['', Validators.required],
     pass2: ['', Validators.required]
   });
-  // Touch events to replace :hover events on touch devices
-  onTouchStart($event) {
-    $event.stopPropagation();
-    $event.currentTarget.classList.add('touch');
-  }
-  onTouchEnd($event) {
-    $event.stopPropagation();
-    $event.currentTarget.classList.remove('touch');
-  }
   new($event) {
     if (this.newGroup.valid) {
       if (this.newGroup.get('pass').value === this.newGroup.get('pass2').value) {
@@ -82,7 +55,7 @@ export class NewComponent implements OnInit {
               this.newMes = 'Account already exists.';
             } else {
               this.newPage = false;
-              this.doneMes = ["You're all set. Welcome to the Team!", 'Sign in now'];
+              this.doneMes = ["You're all set. Check your inbox to verify your email.", 'Sign in now.'];
             }
           },
           err => {
@@ -93,7 +66,7 @@ export class NewComponent implements OnInit {
       } else {
         this.newPassErr = true;
         this.newPass2Err = true;
-        this.newMes = "The two passwords don't match.";
+        this.newMes = "Reconfirm your password.";
       }
     } else {
       if (this.newGroup.get('email').errors) {
@@ -102,7 +75,7 @@ export class NewComponent implements OnInit {
           this.newemailErr = true;
         }
         if (this.newGroup.get('email').errors.email) {
-          this.newMes = 'Make sure you typed in an email.';
+          this.newMes = 'Invalid email.';
           this.newemailErr = true;
         }
       } else {
@@ -122,8 +95,4 @@ export class NewComponent implements OnInit {
       }
     }
   }
-
-  ngOnInit() {
-  }
-
 }

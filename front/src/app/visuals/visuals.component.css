@@ -1,0 +1,402 @@
+:host {
+  width: 100%;
+  height: 100%;
+}
+.visual-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+/*  */
+/* SVG */
+/*  */
+.lines {
+  width: 100%;
+  margin-top: 1.2em;
+}
+.blue-group>path,
+.yellow-group>path {
+  stroke-dasharray: 1110;
+  stroke-dashoffset: 1110;
+  will-change: stroke-dashoffset, transform;
+  animation: dashoffset 1.6s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+  transition: stroke-dasharray 1.6s cubic-bezier(0.85, 0, 0.15, 1);
+}
+.green-group>path {
+  stroke-dasharray: 1110;
+  stroke-dashoffset: -1110;
+  will-change: stroke-dashoffset;
+  animation: dashoffset-reverse 1.6s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+  transition: stroke-dasharray 1.6s cubic-bezier(0.85, 0, 0.15, 1);
+}
+.visual-wrap.recover .blue-group>path {
+  stroke-dasharray: 110;
+}
+.visual-wrap.recover .green-group>path {
+  stroke-dasharray: 110;
+}
+.visual-wrap.recover .yellow-group>path {
+  stroke-dasharray: 110;
+}
+@keyframes dashoffset {
+  from {
+    stroke-dashoffset: 1110;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes dashoffset-reverse {
+  from {
+    stroke-dashoffset: -1110;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+/*  */
+/* HEADER */
+/*  */
+.header-wrap {
+  position: relative;
+  width: 100%;
+}
+.header {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.2em 0.8em 0.8em;
+  text-align: center;
+  transform: translate(-50%, -40%);
+}
+.mask-span {
+  display: inline-block;
+  overflow: hidden;
+}
+.word {
+  white-space: pre;
+  display: inline-block;
+  transform: translate3d(0, 1.8em, 0);
+  backface-visibility: hidden;
+  will-change: transform;
+  animation: float-up 1.6s calc(var(--order)*80ms) cubic-bezier(0.85, 0, 0.15, 1) forwards;
+}
+@keyframes float-up {
+  from {
+    transform: translate3d(0, 1.8em, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+/*  */
+/* SHAPES */
+/*  */
+.shapes-outer-wrap {
+  flex-shrink: 0;
+}
+.shapes-wrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: 40%;
+}
+.circle {
+  border-radius: 50%;
+}
+.blue {
+  background-color: var(--blue);
+}
+.red {
+  background-color: var(--red);
+}
+.yellow {
+  background-color: var(--yellow);
+}
+.green {
+  background-color: var(--green);
+}
+.shapes-wrap>* {
+  width: 20%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: transform 1.6s cubic-bezier(0.85, 0, 0.15, 1);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+.shapes-wrap>*:after {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+}
+.shapes-wrap>*.double {
+  width: 40%;
+}
+.quadrant {
+  overflow: hidden;
+}
+.quadrant-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
+  transform-origin: bottom right;
+  transform: rotate(-90deg);
+  animation: quadrant-mask 1.6s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+}
+.quadrant-circle {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+}
+@keyframes quadrant-mask {
+  from {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* 0. RED SQUARE */
+.visual-wrap.home .rs {
+  transform: translate3d(-100%, 0, 0) scale(0);
+}
+.shapes-wrap.home>.rs {
+  transform: translate3d(-100%, 0, 0) scale(1);
+}
+.visual-wrap.new .rs {
+  transform: translate3d(0%, 0, 0) scale(0);
+}
+.shapes-wrap.new>.rs {
+  transform: translate3d(0%, 0, 0) scale(1);
+}
+.visual-wrap.recover .rs {
+  transform: translate3d(-100%, 0, 0) scale(0);
+}
+.shapes-wrap.recover>.rs {
+  transform: translate3d(-100%, 0, 0) scale(1);
+}
+
+/* 1. BLUE CIRCLE */
+.visual-wrap.home .bc {
+  transform: translate3d(-50%, 0, 0) scale(0);
+}
+.shapes-wrap.home>.bc {
+  transform: translate3d(-50%, 0, 0) scale(1);
+}
+.visual-wrap.new .bc {
+  transform: translate3d(-25%, -25%, 0) scale(0);
+}
+.shapes-wrap.new>.bc {
+  transform: translate3d(-25%, -25%, 0) scale(0.5);
+}
+.visual-wrap.recover .bc {
+  transform: translate3d(0, 50%, 0) scale(0);
+}
+.shapes-wrap.recover>.bc {
+  transform: translate3d(0, 50%, 0) scale(1);
+}
+
+/* 2. RED CIRCLE */
+.visual-wrap.home .rc {
+  transform: translate3d(100%, -100%, 0) scale(0);
+}
+.shapes-wrap.home>.rc {
+  transform: translate3d(100%, -100%, 0) scale(1);
+}
+.visual-wrap.new .rc {
+  transform: translate3d(200%, -100%, 0) scale(0);
+}
+.shapes-wrap.new>.rc {
+  transform: translate3d(200%, -100%, 0) scale(1);
+}
+.visual-wrap.recover .rc {
+  transform: translate3d(0, -100%, 0) scale(0);
+}
+.shapes-wrap.recover>.rc {
+  transform: translate3d(0, -100%, 0) scale(1);
+}
+
+/* 3. GREEN SQUARE */
+.gs {
+  transform-origin: left;
+}
+.visual-wrap.home .gs {
+  transform: translate3d(200%, -100%, 0) scaleX(0);
+}
+.shapes-wrap.home>.gs {
+  transform: translate3d(200%, -100%, 0) scaleX(1);
+}
+.visual-wrap.new .gs {
+  transform: translate3d(200%, 0, 0) scaleX(0);
+}
+.shapes-wrap.new>.gs {
+  transform: translate3d(200%, 0, 0) scaleX(1);
+}
+.visual-wrap.recover .gs {
+  transform: translate3d(200%, 0, 0) scaleX(0);
+}
+.shapes-wrap.recover>.gs {
+  transform: translate3d(200%, 0, 0) scaleX(1);
+}
+
+/* 4. YELLOW QUADRANT */
+.yq {
+  transform-origin: bottom right;
+}
+.visual-wrap.home .yq {
+  transform: rotate(-90deg) translate3d(100%, 100%, 0);
+}
+.shapes-wrap.home>.yq {
+  transform: rotate(-90deg) translate3d(100%, 100%, 0);
+}
+.visual-wrap.new .yq {
+  transform: rotate(0deg) translate3d(100%, -100%, 0);
+}
+.shapes-wrap.new>.yq {
+  transform: rotate(0deg) translate3d(100%, -100%, 0);
+}
+.visual-wrap.recover .yq {
+  transform: translate3d(100%, -100%, 0) rotate(0deg);
+}
+.shapes-wrap.recover>.yq {
+  transform: translate3d(100%, -100%, 0) rotate(0deg);
+}
+
+/* 5. RED QUADRANT */
+.rq {
+  transform-origin: bottom right;
+}
+.visual-wrap.home .rq {
+  transform: translate3d(calc(100% - 1px), 0, 0) rotate(90deg);
+}
+.shapes-wrap.home>.rq {
+  transform: translate3d(calc(100% - 1px), 0, 0) rotate(90deg);
+}
+.visual-wrap.new .rq {
+  transform: translate3d(100%, 0, 0) rotate(0deg);
+}
+.shapes-wrap.new>.rq {
+  transform: translate3d(100%, 0, 0) rotate(0deg);
+}
+.visual-wrap.recover .rq {
+  transform: translate3d(100%, -100%, 0) rotate(90deg);
+}
+.shapes-wrap.recover>.rq {
+  transform: translate3d(100%, -100%, 0) rotate(90deg);
+}
+
+/* 6. BLUE QUADRANT */
+.bq {
+  transform-origin: bottom right;
+}
+.visual-wrap.home .bq {
+  transform: translate3d(calc(200% - 1px), -100%, 0) rotate(90deg);
+}
+.shapes-wrap.home>.bq {
+  transform: translate3d(calc(200% - 1px), -100%, 0) rotate(90deg);
+}
+.visual-wrap.new .bq {
+  transform: translate3d(calc(200% - 1px), -100%, 0) rotate(180deg);
+}
+.shapes-wrap.new>.bq {
+  transform: translate3d(calc(200% - 1px), -100%, 0) rotate(180deg);
+}
+.visual-wrap.recover .bq {
+  transform: translate3d(200%, -100%, 0) rotate(180deg);
+}
+.shapes-wrap.recover>.bq {
+  transform: translate3d(200%, -100%, 0) rotate(180deg);
+}
+
+/* 7. YELLOW CIRCLE */
+.visual-wrap.home .yc {
+  transform: translate3d(300%, 0, 0) scale(0);
+}
+.shapes-wrap.home>.yc {
+  transform: translate3d(300%, 0, 0) scale(1);
+}
+.visual-wrap.new .yc {
+  transform: translate3d(300%, 100%, 0) scale(0);
+}
+.shapes-wrap.new>.yc {
+  transform: translate3d(300%, 100%, 0) scale(1);
+}
+.visual-wrap.recover .yc {
+  transform: translate3d(300%, 0, 0) scale(0);
+}
+.shapes-wrap.recover>.yc {
+  transform: translate3d(300%, 0, 0) scale(0);
+}
+
+/* 7. GREEN CIRCLE */
+.visual-wrap.home .gc {
+  transform: translate3d(200%, 0, 0) scale(0);
+}
+.shapes-wrap.home>.gc {
+  transform: translate3d(200%, 0, 0) scale(1);
+}
+.visual-wrap.new .gc {
+  transform: translate3d(125%, -25%, 0) scale(0);
+}
+.shapes-wrap.new>.gc {
+  transform: translate3d(125%, -25%, 0) scale(0.5);
+}
+.visual-wrap.recover .gc {
+  transform: translate3d(125%, -25%, 0) scale(0);
+}
+.shapes-wrap.recover>.gc {
+  transform: translate3d(125%, -25%, 0) scale(0.5);
+}
+
+/* 8. YELLOW SQUARE */
+.visual-wrap.home .ys {
+  transform: translate3d(250%, 0, 0) scale(0);
+}
+.shapes-wrap.home>.ys {
+  transform: translate3d(250%, 0, 0) scale(1);
+}
+.visual-wrap.new .ys {
+  transform: translate3d(200%, 0, 0) scale(0);
+}
+.shapes-wrap.new>.ys {
+  transform: translate3d(200%, 0, 0) scale(1);
+}
+.visual-wrap.recover .ys {
+  transform: translate3d(200%, 0, 0) scale(0);
+}
+.shapes-wrap.recover>.ys {
+  transform: translate3d(200%, 0, 0) scale(1);
+}
+
+@media only screen and (max-width: 1400px) {
+  .shapes-wrap {
+    width: 125%;
+    padding-bottom: 50%;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .visual-wrap {
+    justify-content: center;
+  }
+  .shapes-wrap {
+    width: 167%;
+    padding-bottom: 67%;
+  }
+  .header-wrap,
+  .padding {
+    display: none;
+  }
+}

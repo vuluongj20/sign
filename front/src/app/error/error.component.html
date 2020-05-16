@@ -1,14 +1,27 @@
-<div class="fin box center">
-  <h1>Oops...</h1>
+<div class="box">
+  <h2 class="header">
+    <span class="mask-span">
+      <span class="word" style="--order: 0">Snap!</span>
+    </span>
+  </h2>
   <div *ngIf="status == 500">
-    <p>There was a server error.</p>
-    <a routerLink="/" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">Try again.</a>
+    <p class="text float-up" style="--order: 2">There was a server error.</p>
+    <a class="link float-up" style="--order: 3"routerLink="/">Try again.</a>
   </div>
   <div *ngIf="status == 404">
-    <p>What you're looking for doesn't exist.</p>
-    <p>Make sure the link is correct.</p>
+    <p class="text float-up" style="--order: 2">What you're looking for doesn't exist.</p>
+    <p class="text float-up" style="--order: 3">Make sure the link is correct.</p>
   </div>
   <div *ngIf="status != 500 && status != 404">
-    <p>Something went wrong.</p>
+    <p class="text float-up" style="--order: 2">Something went wrong.</p>
+  </div>
+  <div class="outer-link-wrap" style="--order: 2">
+    <a
+      class="float-up"
+      routerLink="/">
+      <svg class="back-arrow" viewBox="0 0 5 10">
+          <path stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round" stroke-linecap="round" d="M4 1 1 5 4 9"></path>
+      </svg>
+      Back to Sign in</a>
   </div>
 </div>

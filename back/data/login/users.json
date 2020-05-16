@@ -8,5 +8,15 @@
     "activateUntil": "",
     "resetRand": "",
     "resetUntil": ""
+  },
+  {
+    "email": "abc@xyz.com",
+    "pass": "hello",
+    "type": "norm",
+    "active": true,
+    "activateRand": "",
+    "activateUntil": "",
+    "resetRand": "",
+    "resetUntil": ""
   }
 ]

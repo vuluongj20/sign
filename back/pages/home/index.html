@@ -4,16 +4,71 @@
     <base href="/home/"
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>Sign</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
   </head>
   <body>
-    <div class="box-wrap">
-      <h1>Yay!</h1>
-      <p class="slide-1">You're logged in!</p>
-      <p class="slide-2">This page is secure and only members can see it.</p>
-      <a class="slide-3" href="/delete-cookie">Log out to explore more</a>
+    <div class="shapes-wrap top-left">
+      <div class="bc blue circle double"></div>
+      <div class="gc green circle"></div>
+    </div>
+    <div class="shapes-wrap bottom-right">
+      <div class="yq quadrant">
+        <div class="quadrant-mask">
+          <div class="quadrant-circle yellow"></div>
+        </div>
+      </div>
+      <div class="rq quadrant">
+        <div class="quadrant-mask">
+          <div class="quadrant-circle red"></div>
+        </div>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <h1 class="header">
+        <span class="mask-span">
+          <span class="word" style="--order: 0">You're </span>
+        </span>
+        <span class="mask-span">
+          <span class="word" style="--order: 1">logged </span>
+        </span>
+        <span class="mask-span">
+          <span class="word" style="--order: 2">in!</span>
+        </span>
+      </h1>
+      <div class="section token-wrap">
+        <p class="bold float-up" style="--order: 3">Your JSON Web Token (JWT) is:</p>
+        <p class="token float-up" style="--order: 4">
+          <span id="token-header"></span>.<span id="token-payload"></span>.<span id="token-signature"></span>
+        </p>
+        <a class="button float-up" style="--order: 5" href="https://jwt.io/" target="blank" rel=”noreferrer noopener”>About JWT</a>
+      </div>
+      <div class="section token-wrap">
+        <p class="bold float-up" style="--order: 6">Log out to try other functionalities. You can create new accounts and recover your password.</p>
+        <a class="button float-up" style="--order: 7" href="/delete-cookie">Log out</a>
+      </div>
     </div>
   </body>
+  <script>
+    function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+    let token = getCookie('jwt').replace('-', '\u2011').split('.');
+    document.getElementById('token-header').appendChild(document.createTextNode(token[0] || ''));
+    document.getElementById('token-payload').appendChild(document.createTextNode(token[1] || ''));
+    document.getElementById('token-signature').appendChild(document.createTextNode(token[2] || ''));
+  </script>
 </html>

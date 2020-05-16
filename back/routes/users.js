@@ -31,20 +31,20 @@ router.post('/login', async function (req, res, next) {
           var tokenSettings = {
             algorithm: 'RS256',
             expiresIn: 120,
-            issuer: 'Unknown',
+            issuer: 'Vu Luong',
             subject: email
           };
           if (user.type === 'admin') {
             var token = jwt.sign({account: email, type: 'admin'}, privateKey, tokenSettings);
-            res.cookie('jwt', token, { maxAge: 120000, httpOnly: true, secure: true });
+            res.cookie('jwt', token, { maxAge: 120000, httpOnly: false, secure: true });
             res.json({authorized: true, active: true, type: 'admin'});
           } else if (user.type === 'norm'){
             var token = jwt.sign({account: email, type: 'norm'}, privateKey, tokenSettings);
-            res.cookie('jwt', token, { maxAge: 120000, httpOnly: true, secure: true });
+            res.cookie('jwt', token, { maxAge: 120000, httpOnly: false, secure: true });
             res.json({authorized: true, active: true, type: 'norm'});
           } else if (user.type === 'demo') {
             var token = jwt.sign({account: email, 'type': 'demo'}, privateKey, tokenSettings);
-            res.cookie('jwt', token, { maxAge: 120000, httpOnly: true, secure: true });
+            res.cookie('jwt', token, { maxAge: 120000, httpOnly: false, secure: true });
             res.json({authorized: true, active: true, type: 'demo'});
           }
         } else {
