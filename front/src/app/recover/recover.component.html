@@ -7,7 +7,7 @@
       <span class="word" style="--order: 1">reset</span>
     </span>
   </h2>
-  <p class="message float-up" style="--order: 2">{{mes}}</p>
+  <p class="message float-up" [class.red]="err" style="--order: 2">{{mes}}</p>
   <input class="email-input float-up" style="--order: 3" [class.red]="err" type="email" [formControl]="forgotEmail" placeholder="Email">
   <button class="confirm-button float-up" style="--order: 4" type="button" (click)="sendEmail($event)">
     Done

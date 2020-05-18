@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService } from './data.service';
-import { FormBuilder, Validators } from '@angular/forms';
-import { trigger, style, query, transition, animate, animateChild, group } from '@angular/animations';
+import { trigger, style, query, transition, animate, animateChild } from '@angular/animations';
 
 @Component({
   selector: 'app-root',

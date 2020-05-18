@@ -4,9 +4,10 @@ Sign is a reusable login system that takes advantage of JWT authentication and N
 ![Sign](images/login.png)
 
 ## Features
-The back end uses Express.js and two libraries:
-* JSON Web Tokens (JWT) - an authentication method that securely encodes user information into JSON objects for easy web transfer. In Sign the server sends out these tokens in secure cookies.
-* Nodemailer - a mailing service that allows for sending emails directly from a Node app (a well-configured account is needed).
+The back end uses Express.js and three libraries:
+* **JSON Web Tokens (JWT)** - an authentication method that securely encodes user information into JSON objects for easy web transfer. In Sign the server sends out these tokens in secure cookies.
+* **Nodemailer** - a mailing service that allows for sending emails directly from a Node app (a well-configured account is needed).
+* **Mongoose** - a MongoDB database engine.
 
 The front end uses Angular and has 5 different pages:
 * Login.
@@ -16,30 +17,18 @@ The front end uses Angular and has 5 different pages:
 * Password Reset.
 
 ## Try it out
-You can try a demo of Sign [here](https://sign-vl.herokuapp.com/login/). This is a more self-contained version and does not have Nodemailer, so no verification email will be sent. You can still create new accounts and request for password resets. The server will add the accounts, and generate password reset codes. But without any email verification, the accounts will remain unverified, and the codes will be unused.
-
-You can use this account:
-* Email: test@test.com
-* Password: test
+You can try a demo of Sign [here](https://signvl.herokuapp.com/login/). Use this account to log in:
+* Email: abc@xyz.com
+* Password: hello
 
 A few things to try:
-* Log in with the account above.
-* Take a look at the JWT-carrying cookie. Open the web inspector on your browser, and look for "Cookies" in the "Storage" section (the exact path depends on the browser). Find a cookie called 'jwt'.
-* Create a new account, then try to log in with it. See what happens.
-* Request for a password reset.
+* Logging in with the account above.
+* Taking a peep at the JWT cookie. Open the web inspector on your browser, and look for "Cookies" in the "Storage" section (the exact path depends on the browser). Find a cookie called 'jwt'.
+* Creating a new account.
+* Requesting for a password reset.
 
 ## Use it
 Sign is versatile. Download it, edit it, do whatever you like with it!
-
-#### Requirements
-To run Sign, you will need the following things:
-* Node.js
-* Express.js
-* Angular (2+)
-
-You should have these libraries installed for the Express.js app:
-* [JSON Web Tokens](https://github.com/auth0/node-jsonwebtoken)
-* [Nodemailer](nodemailer github example)
 
 #### Directory structure
 The most important folders and files are:
@@ -51,9 +40,10 @@ The most important folders and files are:
     - login
       - private.key
       - public.key
-      - users.json
   - mid
     - auth.js
+  - models
+    - user.js
   - pages
     - home
     - login
@@ -63,24 +53,27 @@ The most important folders and files are:
 
 - front
   - dist
-    - login
+  - src
 ```
 
 #### Front end
-Edit the Angular app whichever way you like. After building, copy the directory ```front/dist/login``` to ```back/pages/login```, and you're done!
+Edit the Angular app whichever way you like. To build, run ```ng build --prod```, and you're done! Angular has been configured to build to ```back/pages/login```.
 
 #### Back end
-The code in this repository is complete. You can deploy it and have the same app as in the demo. The three main files are:
+The three most important files are:
 * ```back/app.js``` - the main Express.js app.
 * ```back/routes/users.js``` - primary route to process login data.
 * ```back/mid/auth.js``` - authentication middleware, checks if a user is logged in and if their credentials are valid, if not, then redirect to login page.
 
-A few things to do before deploying:
-* Change port: the app is currently set to listen on port ```31000```. You can change this to whatever port you wish in ```back/bin/www```, ```line 15```.
-* Update JWT settings: there are two things you should update for JWT - expiration time and issuer. Do that in ```back/routes/users.js```, ```lines 33 and 34```. The cookie's expiration time should be equal to that of the token. You can change that in the same file, ```lines 39, 43, and 47``` (the ```maxAge``` fields). The intercepting middleware must recognize the same issuer as in the cookie. Update the same issuer value to ```back/mid/auth.js```, ```line 14```.
-* Set the public-private key pair: this JWT instance uses public-key cryptography and requires a set of public-private keys for signing. An example key set is used but needs to be changed as they are public and thus defeats the point of crypto. Update the keys in ```back/data/login/private.key``` and ```back/data/login/public.key```.
-* Initialize Nodemailer: the app contains code for Nodemailer, but since an active email account is needed, it is unused and commented out in the original version. Head to ```back/routes/users.js```, look for the commented sections, and either modify them, or delete them altogether if you have no need for Nodemailer.
-*
+#### Database
+Sign uses a MongoDB (via Mongoose) database. The Mongoose schema is in ```back/models/user.js```. All database operations are done in ```back/routes/users.js```.
+
+#### Deployment checklist
+* **[IMPORTANT] Add a database link:** add the link to your own database in ```back/models/user.js```, ```line 5```. Without this, the app won't work.
+* **Update JWT settings:** there are two things you should update for JWT - expiration time and issuer. You can change the cookie expiration time, ```lines 87, 91, and 95``` (the ```expiresIn``` and ```maxAge``` fields). The intercepting middleware must recognize the same issuer as in the cookie. Update the same issuer value to ```back/mid/auth.js```, ```line 14```.
+* **Set the public-private key pair:** this JWT instance uses public-key cryptography and requires a set of public-private keys for authentication. An example key set is used but needs to be changed as they are public and thus defeats the point of crypto. Update the keys in ```back/data/login/private.key``` and ```back/data/login/public.key```.
+* **Reconfigure Nodemailer (optional):** the Nodemailer instance currently sends emails out to Ethereal, an email interceptor. To send out real emails, update the credentials in ```back/routes/users.js```, ```lines 44-50```.
+* **Change the port (optional):** the app is currently set to listen on port ```8080```. You can change this to whatever port you wish in ```back/bin/www```, ```line 15```. If you do so, make sure to update it in the front end too, in ```front/src/environments``` (both files).
 
 ## License
 Sign is open for all to use under the MIT License.

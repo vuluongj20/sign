@@ -14,19 +14,19 @@ export class LoginComponent {
   ) { }
 
   // Message on top
-  mes: string = 'Welcome to Sign!';
+  mes = 'Welcome to Sign!';
   // Input field errors, true makes the input field go red.
-  emailErr: boolean = false;
-  emailErr2: boolean = false;
-  passErr: boolean = false;
+  emailErr = false;
+  emailErr2 = false;
+  passErr = false;
   // Response from the server
   res: any;
   // Error code for error page
   resErr: number;
   // Views, true means that view is shown
-  loginPage: boolean = true;
+  loginPage = true;
   // Loader icon, true means icon is shown
-  loading: boolean = false;
+  loading = false;
   // Login form
   userGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -34,31 +34,39 @@ export class LoginComponent {
   });
   login($event) {
     if (this.userGroup.valid) {
-      console.log('hey')
-      var user = this.userGroup.value;
-      var button = $event.currentTarget;
+      const user = this.userGroup.value,
+      button = $event.currentTarget;
       button.classList.add('loading');
       this.loading = true;
       this.dataService.post('login', user).subscribe(
         data => {
           this.res = data;
-          if (!this.res.authorized) {
+          if (!this.res.userFound) {
             button.classList.remove('loading');
             this.loading = false;
-            this.mes = 'Oops... wrong email/password.';
+            this.mes = 'Email address not found.';
+            this.passErr = false;
             this.emailErr = true;
-            this.passErr = true;
           } else {
-            if (this.res.active) {
-              document.location.assign('/');
-            } else {
-              this.mes = 'This account is not activated. Check your mailbox and activate it now.';
+            if (!this.res.authorized) {
               button.classList.remove('loading');
               this.loading = false;
-              this.emailErr = true;
+              this.mes = 'Wrong password :(';
+              this.emailErr = false;
               this.passErr = true;
+            } else {
+              if (this.res.verified) {
+                document.location.assign('/home/');
+              } else {
+                this.mes = 'Email address not yet verified. Check your mailbox and verify it now.';
+                button.classList.remove('loading');
+                this.loading = false;
+                this.emailErr = true;
+                this.passErr = false;
+              }
             }
           }
+
         },
         err => {
           this.loginPage = false;

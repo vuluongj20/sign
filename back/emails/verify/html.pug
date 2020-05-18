@@ -1,0 +1,53 @@
+doctype html
+html(lang="en" style="padding: 0; margin: 0;")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    style.
+      @font-face {
+      font-family: 'GT Haptik';
+      font-weight: '700';
+      src: url('https://res.cloudinary.com/vuluongj20/raw/upload/v1589741562/fonts/GTHaptik-Bold_lyvi6r.woff2') format('woff2'),
+      url('https://res.cloudinary.com/vuluongj20/raw/upload/v1589741562/fonts/GTHaptik-Bold_qaex3v.woff') format('woff');}
+      @font-face {
+      font-family: 'GT Haptik';
+      font-weight: '400';
+      src: url('https://res.cloudinary.com/vuluongj20/raw/upload/v1589741562/fonts/GTHaptik-Regular_nkaujo.woff2') format('woff2'),
+      url('https://res.cloudinary.com/vuluongj20/raw/upload/v1589741563/fonts/GTHaptik-Regular_lt4gdn.woff') format('woff');}
+      @media only screen and (max-width: 1024px) {
+      body {
+      font-size: 16px;
+      }
+      }
+      @media only screen and (max-width: 767px) {
+      body {
+      font-size: 15px;
+      }
+      h1 {
+      font-size: 2.4em;
+      }
+      .content-inner-wrap {
+      padding: 12%;
+      }
+      }
+  body(style="margin: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; padding: 4em 0; font-size: 17px; background-color: #FAFAFA;")
+    .body-wrap
+      .shapes-wrap(style="padding: 0; position: absolute; top: 0; left: 50%; transform: translate(-50%, 0); min-width: 32em; width: 100%; max-width: 56em; margin: 0 auto;")
+        img(src="https://res.cloudinary.com/vuluongj20/image/upload/v1589743494/sign/email_verify_xv5jrs.png" style="padding: 0; margin: 0; width: 100%; height: auto;")
+      .content-wrap(style="padding: 0; position: relative; width: 85%; max-width: 44em; box-sizing: border-box; background: #FFFFFF; margin: 0 auto; border-radius: 1.6em; z-index: 1;")
+        .content-inner-wrap(style="margin: 0; padding: 12% 15%;")
+          h1.header(style="padding: 0; margin: 0; font-family: 'GT Haptik', 'Arial', sans-serif; font-weight: 700; font-size: 2.8em; color: #333333; margin-bottom: 0.6em;") Verify your email.
+          .section(style="padding: 0; margin: 0; margin-bottom: 1.6em;")
+            p(style="padding: 0; margin: 0; font-family: 'GT Haptik', 'Arial', sans-serif; font-weight: 400; line-height: 1.5; color: #555555; margin-bottom: 0.4em;")
+              | Thank you for signing up! We&rsquo;re so excited to have you. There&rsquo;s just one last thing you need to do before you can use your account:
+            a.button(style="margin: 0; font-family: 'GT Haptik', 'Arial', sans-serif; line-height: 1.5; word-wrap: break-word; display: inline-block; -webkit-appearance: none; position: relative; padding: 0.4em 1.6em; margin-top: 0.8em; border-radius: 0.4em; background-color: #333333; color: #FFFFFF; font-size: 1em; font-weight: 700; letter-spacing: 0.04em; text-decoration: none; border: none; cursor: pointer; transition: background-color 160ms ease; --order: 5;" href=link target="blank" rel="”noreferrer" noopener”="") Verify email
+          .section.label(style="padding: 0; margin: 0; margin-bottom: 1.6em;")
+            p.no-margin(style="padding: 0; margin: 0; font-family: 'GT Haptik', 'Arial', sans-serif; font-weight: 400; line-height: 1.5; margin-bottom: 0; font-size: 0.9em; color: #999999;") If that didn&rsquo;t work, try manually pasting the following link to your browser:
+            a(href=link style="padding: 0; margin: 0; font-family: 'GT Haptik', 'Arial', sans-serif; font-weight: 400; line-height: 1.5; word-wrap: break-word; text-decoration: underline; transition: color 160ms; font-size: 0.9em; color: #999999;") #{link}
+          .footer.label(style="padding: 0; margin: 0; border-top: solid 1px #DDDDDD; padding-top: 0.8em;")
+            p(style="padding: 0; margin: 0; font-family: 'GT Haptik', 'Arial', sans-serif; font-weight: 400; line-height: 1.5; margin-bottom: 0.4em; font-size: 0.9em; color: #999999;")
+              | This email was generated using Sign, an open-source authentication and account management system.
+            p(style="padding: 0; margin: 0; font-family: 'GT Haptik', 'Arial', sans-serif; font-weight: 400; line-height: 1.5; margin-bottom: 0.4em; font-size: 0.9em; color: #999999;")
+              | To learn more about Sign, visit&nbsp;
+              a(href="https://github.com/vuluongj20/sign" style="padding: 0; margin: 0; font-family: 'GT Haptik', 'Arial', sans-serif; font-weight: 400; line-height: 1.5; color: #999999; word-wrap: break-word; text-decoration: underline; transition: color 160ms;") its Github page
+              | .

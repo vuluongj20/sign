@@ -10,7 +10,7 @@ import { VisualsComponent } from './visuals/visuals.component';
 import { LoginComponent } from './login/login.component';
 import { RecoverComponent } from './recover/recover.component';
 import { NewComponent } from './new/new.component';
-import { ActivateComponent } from './activate/activate.component';
+import { VerifyComponent } from './verify/verify.component';
 import { ErrorComponent } from './error/error.component';
 import { ResetComponent } from './reset/reset.component';
 import { DoneComponent } from './done/done.component';
@@ -22,7 +22,7 @@ import { DoneComponent } from './done/done.component';
     LoginComponent,
     RecoverComponent,
     NewComponent,
-    ActivateComponent,
+    VerifyComponent,
     ErrorComponent,
     ResetComponent,
     DoneComponent

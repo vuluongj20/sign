@@ -1,7 +1,22 @@
 extends layout
 
 block content
-  div.center
-    h1 Oops
-    each line in mes
-      p= line
+  .shapes-wrap.bottom-right
+      .bc.blue.circle.double
+      .gc.green.circle
+  .shapes-wrap.top-left
+    .yq.quadrant
+      .quadrant-mask
+        .quadrant-circle.yellow
+    .rq.quadrant
+      .quadrant-mask
+        .quadrant-circle.red
+  .content-wrap
+    h1.header
+      each word, index in header
+        span.mask-span
+          span.word(style="--order: " + index) #{word}
+    .section.token-wrap
+      p.float-up(style="--order: 3") #{message}
+      if link
+        a.button.float-up(style="--order: 4" href=link.url) #{link.text}

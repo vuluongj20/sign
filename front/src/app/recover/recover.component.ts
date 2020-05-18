@@ -15,25 +15,25 @@ export class RecoverComponent {
   ) { }
 
   // Text at the top
-  mes: string = "We'll send you an email with a link to reset your password.";
+  mes = 'We\'ll send you an email with a link to reset your password.';
   // Error code for error page
   resErr: number;
   // Message for done page
   doneMes: any;
   // Input field errors, true makes the input field go red.
-  err: boolean = false;
+  err = false;
   // Server responses
   res: any;
   // Views, true means that view is shown
-  inputPage: boolean = true;
+  inputPage = true;
   // Loader icon, true means icon is shown
-  loading: boolean = false;
+  loading = false;
   // Email form
   forgotEmail = this.fb.control('', [Validators.required, Validators.email]);
   sendEmail($event) {
     if (this.forgotEmail.valid) {
-      var email = this.forgotEmail.value;
-      var button = $event.currentTarget;
+      const email = this.forgotEmail.value,
+      button = $event.currentTarget;
       button.classList.add('loading');
       this.loading = true;
       this.dataService.post('recover', {mail: email}).subscribe(
@@ -43,24 +43,25 @@ export class RecoverComponent {
           this.loading = false;
           if (this.res.userExists) {
             this.inputPage = false;
-            this.doneMes = ['Done! If you have an account with us, you should receive an email containing a link to reset your password.'];
+            this.doneMes = ['Done! We sent you an email with a link to reset your password.'];
           } else {
-            this.mes = 'This is not a registered account.';
+            this.err = true;
+            this.mes = 'Oops! We couldn\'t find an account associated with this email.';
           }
         },
         err => {
           this.inputPage = false;
           this.resErr = err.status;
         }
-      )
+      );
     } else {
       this.err = true;
       if (this.forgotEmail.errors.email) {
-        this.mes = "Invalid email.";
+        this.mes = 'Invalid email. Make sure you typed in your full email address.';
       }
       if (this.forgotEmail.errors.required) {
-        this.mes = 'Email required.';
+        this.mes = 'We need your email address to send you a password reset link.';
       }
     }
-  };
+  }
 }

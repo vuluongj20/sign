@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { trigger, style, query, state, transition, animate, animateChild, group } from '@angular/animations';
+import { Component, OnInit, Input } from '@angular/core';
+import { trigger, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-visuals',
@@ -17,12 +17,12 @@ import { trigger, style, query, state, transition, animate, animateChild, group 
     ])
   ]
 })
-export class VisualsComponent {
+export class VisualsComponent implements OnInit {
   @Input() currentRoute: String;
-  loaded: boolean = false;
+  loaded = false;
   ngOnInit() {
     setTimeout(() => {
       this.loaded = true;
-    }, 0)
+    }, 0);
   }
 }

@@ -17,7 +17,6 @@
 }
 .circle {
   margin: 0 auto 2em auto;
-  r: 48;
   stroke: var(--dark);
   stroke-width: 4;
   transform: translate(50px, 50px) rotate(-90deg);

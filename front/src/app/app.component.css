@@ -7,8 +7,10 @@
   position: relative;
   width: calc(100% - 24em);
   height: 100%;
-  border-right: solid 2px var(--line);
+  border-right: solid 1px var(--line);
   overflow: hidden;
+  background: #F9F9F9;
+  --dark: #272727;
 }
 .app-content {
   position: relative;
@@ -25,6 +27,7 @@
   .app-visuals {
     position: absolute;
     width: 100%;
+    border-right: none;
   }
   .app-content {
     position: absolute;
@@ -40,12 +43,12 @@
     justify-content: center;
     align-items: center;
     border-radius: 1.2em;
-    border: solid 2px var(--line);
+    border: solid 1px var(--line);
   }
   @supports (backdrop-filter: blur(0px)) {
     .app-content {
       background: var(--background-opaque);
-      border: solid 2px var(--line-opaque);
+      border: solid 1px var(--line-opaque);
       backdrop-filter: saturate(0.5) blur(40px);
     }
   }

@@ -7,7 +7,7 @@
       <span class="word" style="--order: 1">in</span>
     </span>
   </h2>
-  <p class="message float-up" style="--order: 2">{{mes}}</p>
+  <p class="message float-up" [class.red]="emailErr || emailErr2 || passErr" style="--order: 2">{{mes}}</p>
   <form [formGroup]="userGroup">
     <input
       class="email-input float-up"
@@ -37,11 +37,11 @@
       </svg>
     </button>
   </form>
-</div>
-<div class="outer-link-wrap bottom" style="--order: 5">
-  <p class="float-up">Don't have an account? </p>
-  <a
-    class="float-up"
-    routerLink="/new">Sign up now.</a>
+  <div class="outer-link-wrap bottom" style="--order: 5">
+    <p class="float-up">Don't have an account? </p>
+    <a
+      class="float-up"
+      routerLink="/new">Sign up now.</a>
+  </div>
 </div>
 <app-error *ngIf="resErr" [status]="resErr"></app-error>

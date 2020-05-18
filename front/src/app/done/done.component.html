@@ -1,7 +1,7 @@
 <div class="box">
   <svg class="check" viewBox="0 0 100 100">
     <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <circle class="circle"/>
+      <circle r="48" class="circle"/>
       <path class="line" d="M20 60 45 80 78 30" />
     </g>
   </svg>
@@ -9,7 +9,7 @@
     <p class="text float-up" style="--order: 4">{{mes[0]}}</p>
     <a
       *ngIf="mes[1]"
-      href="/login/"
+      routerLink="/"
       class="link float-up"
       style="--order: 5">{{mes[1]}}</a>
   </div>

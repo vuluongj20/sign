@@ -1,4 +1,4 @@
-<div *ngIf="invalidPage" class="fin box center">
+<div *ngIf="invalidPage" class="box">
   <h2 class="header">
     <span class="mask-span">
       <span class="word" style="--order: 0">Oh </span>
@@ -7,7 +7,7 @@
       <span class="word" style="--order: 1">no!</span>
     </span>
   </h2>
-  <p class="text float-up" style="--order: 3">This link is not valid. Make sure you pasted in the right one.</p>
+  <p class="text float-up" style="--order: 3">This link is not valid. Make sure you used the right one.</p>
 </div>
 <div *ngIf="expiredPage" class="fin box center">
   <h2 class="header">
@@ -19,7 +19,16 @@
     </span>
   </h2>
   <p class="text float-up" style="--order: 3">This link has expired.</p>
-  <a class="link float-up" style="--order: 4" (click)="resendLink()" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">Send a new link</a>
+  <a class="button link float-up" style="--order: 4" (click)="resendLink()">Send a new link</a>
+</div>
+<div class="outer-link-wrap" style="--order: 3">
+  <a
+    class="float-up"
+    routerLink="/">
+    <svg class="back-arrow" viewBox="0 0 5 10">
+        <path stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round" stroke-linecap="round" d="M4 1 1 5 4 9"></path>
+    </svg>
+    Sign in</a>
 </div>
 <app-done *ngIf="doneMes" [mes]="doneMes"></app-done>
 <app-error *ngIf="resErr" [status]="resErr"></app-error>

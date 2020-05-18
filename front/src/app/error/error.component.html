@@ -5,8 +5,7 @@
     </span>
   </h2>
   <div *ngIf="status == 500">
-    <p class="text float-up" style="--order: 3">There was a server error.</p>
-    <a class="link float-up" style="--order: 4"routerLink="/">Try again.</a>
+    <p class="text float-up" style="--order: 3">There was a server error. You could try again later.</p>
   </div>
   <div *ngIf="status == 404">
     <p class="text float-up" style="--order: 3">What you're looking for doesn't exist. Make sure the link you put is was correct, or check back later.</p>

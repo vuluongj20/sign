@@ -15,22 +15,22 @@ export class NewComponent {
   ) { }
 
   // Text at the top
-  newMes: string = 'Become a member now.';
-  comMes: string = '';
+  newMes = 'Become a member now!';
+  comMes = '';
   // Error code for error page
   resErr: number;
   // Message on success pages
   doneMes: any;
   // Input field errors, true makes the input field go red.
-  newemailErr: boolean = false;
-  newPassErr: boolean = false;
-  newPass2Err: boolean = false;
+  newemailErr = false;
+  newPassErr = false;
+  newPass2Err = false;
   // Server responses
   newRes: any;
   // Views, true means that view is shown
-  newPage: boolean = true;
+  newPage = true;
   // Loader icon, true means icon is shown
-  loading: boolean = false;
+  loading = false;
   // Forms
   newGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -40,12 +40,12 @@ export class NewComponent {
   new($event) {
     if (this.newGroup.valid) {
       if (this.newGroup.get('pass').value === this.newGroup.get('pass2').value) {
-        var button = $event.currentTarget;
+        const button = $event.currentTarget,
+          newMem = this.newGroup.value;
         button.classList.add('loading');
         this.loading = true;
         this.newPassErr = false;
         this.newPass2Err = false;
-        var newMem = this.newGroup.value;
         this.dataService.post('new', newMem).subscribe(
           data => {
             this.newRes = data;
@@ -55,7 +55,7 @@ export class NewComponent {
               this.newMes = 'Account already exists.';
             } else {
               this.newPage = false;
-              this.doneMes = ["You're all set. Check your inbox to verify your email.", 'Sign in now.'];
+              this.doneMes = ['You\'re all set. Check your inbox to verify your email.'];
             }
           },
           err => {
@@ -66,7 +66,7 @@ export class NewComponent {
       } else {
         this.newPassErr = true;
         this.newPass2Err = true;
-        this.newMes = "Reconfirm your password.";
+        this.newMes = 'The passwords are not matching.';
       }
     } else {
       if (this.newGroup.get('email').errors) {
@@ -75,7 +75,7 @@ export class NewComponent {
           this.newemailErr = true;
         }
         if (this.newGroup.get('email').errors.email) {
-          this.newMes = 'Invalid email.';
+          this.newMes = 'Oops… Invalid email address.';
           this.newemailErr = true;
         }
       } else {

@@ -3,11 +3,11 @@ import { DataService } from '../data.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-activate',
-  templateUrl: './activate.component.html',
-  styleUrls: ['./activate.component.css']
+  selector: 'app-verify',
+  templateUrl: './verify.component.html',
+  styleUrls: ['./verify.component.css']
 })
-export class ActivateComponent implements OnInit {
+export class VerifyComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
@@ -22,12 +22,12 @@ export class ActivateComponent implements OnInit {
   res: any;
   resendRes: any;
   // Views, true means that view is shown
-  expiredPage: boolean = false;
-  invalidPage: boolean = false;
+  expiredPage = false;
+  invalidPage = false;
   // Resend link function
   resendLink() {
     this.route.params.subscribe(params => {
-      var rand = params.rand;
+      const rand = params.rand;
       this.dataService.post('resend', {type: 'activate', rand: rand}).subscribe(
         () => {
           this.expiredPage = false;
@@ -36,18 +36,18 @@ export class ActivateComponent implements OnInit {
         err => {
           this.resErr = err.status;
         }
-      )
-    })
+      );
+    });
   }
   ngOnInit() {
     this.route.params.subscribe(params => {
-      var rand = params.rand;
-      this.dataService.post('verify', {rand: rand}).subscribe(
+      const rand = params.rand;
+      this.dataService.post('verify', {type: 'verify', rand: rand}).subscribe(
         data => {
           this.res = data;
           if (this.res.userFound) {
             if (this.res.randValid) {
-              this.doneMes = ['Great! Your email is now verified.', 'Sign in now'];
+              this.doneMes = ['Your email address is now verified!', 'Sign in now.'];
             } else {
               this.expiredPage = true;
             }

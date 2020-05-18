@@ -34,6 +34,25 @@
         <span class="word" style="--order: 2">you</span>
       </span>
     </h1>
+    <h1 [@fade] *ngIf="currentRoute === 'reset'" class="header center">
+      <span class="mask-span">
+        <span class="word" style="--order: 0">You're </span>
+      </span>
+      <span class="mask-span">
+        <span class="word" style="--order: 1">almost </span>
+      </span>
+      <span class="mask-span">
+        <span class="word" style="--order: 2">there</span>
+      </span>
+    </h1>
+    <h1 [@fade] *ngIf="currentRoute === 'verify'" class="header center">
+      <span class="mask-span">
+        <span class="word" style="--order: 0">Almost </span>
+      </span>
+      <span class="mask-span">
+        <span class="word" style="--order: 1">done…</span>
+      </span>
+    </h1>
   </div>
   <div class="shapes-outer-wrap">
     <div class="shapes-wrap" [ngClass]="loaded && currentRoute">

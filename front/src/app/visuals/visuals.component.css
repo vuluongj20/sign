@@ -176,16 +176,20 @@
 .shapes-wrap.home>.rs {
   transform: translate3d(-100%, 0, 0) scale(1);
 }
-.visual-wrap.new .rs {
+.visual-wrap.new .rs,
+.visual-wrap.verify .rs {
   transform: translate3d(0%, 0, 0) scale(0);
 }
-.shapes-wrap.new>.rs {
+.shapes-wrap.new>.rs,
+.shapes-wrap.verify>.rs {
   transform: translate3d(0%, 0, 0) scale(1);
 }
-.visual-wrap.recover .rs {
+.visual-wrap.recover .rs,
+.visual-wrap.reset .rs {
   transform: translate3d(-100%, 0, 0) scale(0);
 }
-.shapes-wrap.recover>.rs {
+.shapes-wrap.recover>.rs,
+.shapes-wrap.reset>.rs {
   transform: translate3d(-100%, 0, 0) scale(1);
 }
 
@@ -196,16 +200,20 @@
 .shapes-wrap.home>.bc {
   transform: translate3d(-50%, 0, 0) scale(1);
 }
-.visual-wrap.new .bc {
+.visual-wrap.new .bc,
+.visual-wrap.verify .bc {
   transform: translate3d(-25%, -25%, 0) scale(0);
 }
-.shapes-wrap.new>.bc {
+.shapes-wrap.new>.bc,
+.shapes-wrap.verify>.bc {
   transform: translate3d(-25%, -25%, 0) scale(0.5);
 }
-.visual-wrap.recover .bc {
+.visual-wrap.recover .bc,
+.visual-wrap.reset .bc {
   transform: translate3d(0, 50%, 0) scale(0);
 }
-.shapes-wrap.recover>.bc {
+.shapes-wrap.recover>.bc,
+.shapes-wrap.reset>.bc {
   transform: translate3d(0, 50%, 0) scale(1);
 }
 
@@ -216,16 +224,20 @@
 .shapes-wrap.home>.rc {
   transform: translate3d(100%, -100%, 0) scale(1);
 }
-.visual-wrap.new .rc {
+.visual-wrap.new .rc,
+.visual-wrap.verify .rc {
   transform: translate3d(200%, -100%, 0) scale(0);
 }
-.shapes-wrap.new>.rc {
+.shapes-wrap.new>.rc,
+.shapes-wrap.verify>.rc {
   transform: translate3d(200%, -100%, 0) scale(1);
 }
-.visual-wrap.recover .rc {
+.visual-wrap.recover .rc,
+.visual-wrap.reset .rc {
   transform: translate3d(0, -100%, 0) scale(0);
 }
-.shapes-wrap.recover>.rc {
+.shapes-wrap.recover>.rc,
+.shapes-wrap.reset>.rc {
   transform: translate3d(0, -100%, 0) scale(1);
 }
 
@@ -239,16 +251,20 @@
 .shapes-wrap.home>.gs {
   transform: translate3d(200%, -100%, 0) scaleX(1);
 }
-.visual-wrap.new .gs {
+.visual-wrap.new .gs,
+.visual-wrap.verify .gs {
   transform: translate3d(200%, 0, 0) scaleX(0);
 }
-.shapes-wrap.new>.gs {
+.shapes-wrap.new>.gs,
+.shapes-wrap.verify>.gs {
   transform: translate3d(200%, 0, 0) scaleX(1);
 }
-.visual-wrap.recover .gs {
+.visual-wrap.recover .gs,
+.visual-wrap.reset .gs {
   transform: translate3d(200%, 0, 0) scaleX(0);
 }
-.shapes-wrap.recover>.gs {
+.shapes-wrap.recover>.gs,
+.shapes-wrap.reset>.gs {
   transform: translate3d(200%, 0, 0) scaleX(1);
 }
 
@@ -262,16 +278,20 @@
 .shapes-wrap.home>.yq {
   transform: rotate(-90deg) translate3d(100%, 100%, 0);
 }
-.visual-wrap.new .yq {
+.visual-wrap.new .yq,
+.visual-wrap.verify .yq {
   transform: rotate(0deg) translate3d(100%, -100%, 0);
 }
-.shapes-wrap.new>.yq {
+.shapes-wrap.new>.yq,
+.shapes-wrap.verify>.yq {
   transform: rotate(0deg) translate3d(100%, -100%, 0);
 }
-.visual-wrap.recover .yq {
+.visual-wrap.recover .yq,
+.visual-wrap.reset .yq {
   transform: translate3d(100%, -100%, 0) rotate(0deg);
 }
-.shapes-wrap.recover>.yq {
+.shapes-wrap.recover>.yq,
+.shapes-wrap.reset>.yq {
   transform: translate3d(100%, -100%, 0) rotate(0deg);
 }
 
@@ -285,16 +305,20 @@
 .shapes-wrap.home>.rq {
   transform: translate3d(calc(100% - 1px), 0, 0) rotate(90deg);
 }
-.visual-wrap.new .rq {
+.visual-wrap.new .rq,
+.visual-wrap.verify .rq {
   transform: translate3d(100%, 0, 0) rotate(0deg);
 }
-.shapes-wrap.new>.rq {
+.shapes-wrap.new>.rq,
+.shapes-wrap.verify>.rq {
   transform: translate3d(100%, 0, 0) rotate(0deg);
 }
-.visual-wrap.recover .rq {
+.visual-wrap.recover .rq,
+.visual-wrap.reset .rq {
   transform: translate3d(100%, -100%, 0) rotate(90deg);
 }
-.shapes-wrap.recover>.rq {
+.shapes-wrap.recover>.rq,
+.shapes-wrap.reset>.rq {
   transform: translate3d(100%, -100%, 0) rotate(90deg);
 }
 
@@ -308,16 +332,20 @@
 .shapes-wrap.home>.bq {
   transform: translate3d(calc(200% - 1px), -100%, 0) rotate(90deg);
 }
-.visual-wrap.new .bq {
+.visual-wrap.new .bq,
+.visual-wrap.verify .bq {
   transform: translate3d(calc(200% - 1px), -100%, 0) rotate(180deg);
 }
-.shapes-wrap.new>.bq {
+.shapes-wrap.new>.bq,
+.shapes-wrap.verify>.bq {
   transform: translate3d(calc(200% - 1px), -100%, 0) rotate(180deg);
 }
-.visual-wrap.recover .bq {
+.visual-wrap.recover .bq,
+.visual-wrap.reset .bq {
   transform: translate3d(200%, -100%, 0) rotate(180deg);
 }
-.shapes-wrap.recover>.bq {
+.shapes-wrap.recover>.bq,
+.shapes-wrap.reset>.bq {
   transform: translate3d(200%, -100%, 0) rotate(180deg);
 }
 
@@ -328,16 +356,20 @@
 .shapes-wrap.home>.yc {
   transform: translate3d(300%, 0, 0) scale(1);
 }
-.visual-wrap.new .yc {
+.visual-wrap.new .yc,
+.visual-wrap.verify .yc {
   transform: translate3d(300%, 100%, 0) scale(0);
 }
-.shapes-wrap.new>.yc {
+.shapes-wrap.new>.yc,
+.shapes-wrap.verify>.yc {
   transform: translate3d(300%, 100%, 0) scale(1);
 }
-.visual-wrap.recover .yc {
+.visual-wrap.recover .yc,
+.visual-wrap.reset .yc {
   transform: translate3d(300%, 0, 0) scale(0);
 }
-.shapes-wrap.recover>.yc {
+.shapes-wrap.recover>.yc,
+.shapes-wrap.reset>.yc {
   transform: translate3d(300%, 0, 0) scale(0);
 }
 
@@ -348,16 +380,20 @@
 .shapes-wrap.home>.gc {
   transform: translate3d(200%, 0, 0) scale(1);
 }
-.visual-wrap.new .gc {
+.visual-wrap.new .gc,
+.visual-wrap.verify .gc {
   transform: translate3d(125%, -25%, 0) scale(0);
 }
-.shapes-wrap.new>.gc {
+.shapes-wrap.new>.gc,
+.shapes-wrap.verify>.gc {
   transform: translate3d(125%, -25%, 0) scale(0.5);
 }
-.visual-wrap.recover .gc {
+.visual-wrap.recover .gc,
+.visual-wrap.reset .gc {
   transform: translate3d(125%, -25%, 0) scale(0);
 }
-.shapes-wrap.recover>.gc {
+.shapes-wrap.recover>.gc,
+.shapes-wrap.reset>.gc {
   transform: translate3d(125%, -25%, 0) scale(0.5);
 }
 
@@ -368,16 +404,20 @@
 .shapes-wrap.home>.ys {
   transform: translate3d(250%, 0, 0) scale(1);
 }
-.visual-wrap.new .ys {
+.visual-wrap.new .ys,
+.visual-wrap.verify .ys {
   transform: translate3d(200%, 0, 0) scale(0);
 }
-.shapes-wrap.new>.ys {
+.shapes-wrap.new>.ys,
+.shapes-wrap.verify>.ys {
   transform: translate3d(200%, 0, 0) scale(1);
 }
-.visual-wrap.recover .ys {
+.visual-wrap.recover .ys,
+.visual-wrap.reset .ys {
   transform: translate3d(200%, 0, 0) scale(0);
 }
-.shapes-wrap.recover>.ys {
+.shapes-wrap.recover>.ys,
+.shapes-wrap.reset>.ys {
   transform: translate3d(200%, 0, 0) scale(1);
 }
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from './../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,6 @@ import { HttpClient } from '@angular/common/http';
 export class DataService {
   constructor(private http: HttpClient) { }
   post(link: string, data) {
-    return this.http.post('/api/users/' + link, data);
+    return this.http.post(environment.apiUrl + '/api/users/' + link, data);
   }
 }

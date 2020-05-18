@@ -1,19 +1,34 @@
-<div *ngIf="resetPage" class="box center">
-  <p>{{resetMes}}</p>
+<div *ngIf="resetPage" class="box">
+  <h2 class="header">
+    <span class="mask-span">
+      <span class="word" style="--order: 0">Password </span>
+    </span>
+    <span class="mask-span">
+      <span class="word" style="--order: 1">reset</span>
+    </span>
+  </h2>
+  <p class="message float-up" [class.red]="newPassErr || newPass2Err" style="--order: 3">{{resetMes}}</p>
   <form [formGroup]="resetGroup">
     <input
+      class="float-up"
+      style="--order: 4"
       [class.red]="newPassErr"
       formControlName="newPass"
       placeholder="New password"
       type="password"
       autocomplete="new-password">
     <input
+      class="float-up"
+      style="--order: 5"
       [class.red]="newPass2Err"
       formControlName="newPass2"
       placeholder="Confirm new password"
       type="password"
       autocomplete="new-password">
-    <button (click)="reset($event)">
+    <button
+      (click)="reset($event)"
+      class="float-up"
+      style="--order: 6">
       Reset
       <svg *ngIf="loading" class="center" width="1.2em" height="1.2em">
         <circle class="loader-circle"/>
@@ -21,16 +36,25 @@
     </button>
   </form>
 </div>
+<div class="outer-link-wrap" style="--order: 3">
+  <a
+    class="float-up"
+    routerLink="/">
+    <svg class="back-arrow" viewBox="0 0 5 10">
+        <path stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round" stroke-linecap="round" d="M4 1 1 5 4 9"></path>
+    </svg>
+    Sign in</a>
+</div>
 <div *ngIf="invalidPage" class="fin box center">
   <h2 class="header">
     <span class="mask-span">
       <span class="word" style="--order: 0">Oh </span>
     </span>
     <span class="mask-span">
-      <span class="word" style="--order: 0">no!</span>
+      <span class="word" style="--order: 1">no!</span>
     </span>
   </h2>
-  <p>This link is not valid.</p>
+  <p class="message float-up" style="--order: 3">This link is not valid.</p>
 </div>
 <div *ngIf="expiredPage" class="fin box center">
   <h2 class="header">
@@ -38,10 +62,10 @@
       <span class="word" style="--order: 0">Too </span>
     </span>
     <span class="mask-span">
-      <span class="word" style="--order: 0">late!</span>
+      <span class="word" style="--order: 1">late!</span>
     </span>
   </h2>
-  <p>This link has expired.</p>
+  <p class="message float-up" style="--order: 3">This link has expired.</p>
   <a (click)="resendLink()">Send a new link</a>
 </div>
 <app-done *ngIf="doneMes" [mes]="doneMes"></app-done>

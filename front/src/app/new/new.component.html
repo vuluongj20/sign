@@ -7,7 +7,7 @@
       <span class="word" style="--order: 1">up</span>
     </span>
   </h2>
-  <p class="message float-up" style="--order: 2">{{newMes}}</p>
+  <p class="message float-up" [class.red]="newemailErr || newPassErr || newPass2Err" style="--order: 2">{{newMes}}</p>
   <form [formGroup]="newGroup" autocomplete="off">
     <input
       class="email-input float-up"
@@ -29,7 +29,7 @@
       class="confirm-password-input float-up"
       style="--order: 5"
       autocomplete="new-password"
-      [class.red]="newPassErr"
+      [class.red]="newPass2Err"
       type="password"
       placeholder="Comfirm password"
       formControlName="pass2">

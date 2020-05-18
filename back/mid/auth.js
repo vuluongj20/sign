@@ -1,16 +1,14 @@
-var jwt = require('jsonwebtoken');
-var fs = require('fs');
-var util = require('util');
+const jwt = require('jsonwebtoken');
+const fs = require('fs');
+const util = require('util');
 
-const readFile = util.promisify(fs.readFile);
+const publicKey = fs.readFileSync('./data/login/public.key', 'utf8');
 
 module.exports = async function(req, res, next) {
   try {
-    var cookie = req.cookies.jwt;
-    console.log(cookie)
+    const cookie = req.cookies.jwt;
     if (cookie) {
-      var publicKey = await readFile('./data/login/public.key', 'utf8');
-      var verified = await jwt.verify(cookie, publicKey, {
+      const verified = await jwt.verify(cookie, publicKey, {
         algorithm: ['RS256'],
         issuer: 'Vu Luong'
       });

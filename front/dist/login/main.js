@@ -465,7 +465,7 @@ module.exports = ":host {\n  width: 100%;\n  height: 100%;\n  box-sizing: border
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"box\">\n  <h2 class=\"header\">\n    <span class=\"mask-span\">\n      <span class=\"word\" style=\"--order: 0\">Snap!</span>\n    </span>\n  </h2>\n  <div *ngIf=\"status == 500\">\n    <p class=\"text float-up\" style=\"--order: 3\">There was a server error.</p>\n    <a class=\"link float-up\" style=\"--order: 4\"routerLink=\"/\">Try again.</a>\n  </div>\n  <div *ngIf=\"status == 404\">\n    <p class=\"text float-up\" style=\"--order: 3\">What you're looking for doesn't exist. Make sure the link you put is was correct, or check back later.</p>\n  </div>\n  <div *ngIf=\"status != 500 && status != 404\">\n    <p class=\"text float-up\" style=\"--order: 3\">Something went wrong.</p>\n  </div>\n</div>\n"
+module.exports = "<div class=\"box\">\n  <h2 class=\"header\">\n    <span class=\"mask-span\">\n      <span class=\"word\" style=\"--order: 0\">Snap!</span>\n    </span>\n  </h2>\n  <div *ngIf=\"status == 500\">\n    <p class=\"text float-up\" style=\"--order: 3\">There was a server error.</p>\n  </div>\n  <div *ngIf=\"status == 404\">\n    <p class=\"text float-up\" style=\"--order: 3\">What you're looking for doesn't exist. Make sure the link you put is was correct, or check back later.</p>\n  </div>\n  <div *ngIf=\"status != 500 && status != 404\">\n    <p class=\"text float-up\" style=\"--order: 3\">Something went wrong.</p>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -529,7 +529,7 @@ module.exports = ":host {\n  width: 100%;\n  height: 100%;\n  box-sizing: border
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"loginPage\" class=\"box link-bottom\">\n  <h2 class=\"header\">\n    <span class=\"mask-span\">\n      <span class=\"word\" style=\"--order: 0\">Sign </span>\n    </span>\n    <span class=\"mask-span\">\n      <span class=\"word\" style=\"--order: 1\">in</span>\n    </span>\n  </h2>\n  <p class=\"message float-up\" style=\"--order: 2\">{{mes}}</p>\n  <form [formGroup]=\"userGroup\">\n    <input\n      class=\"email-input float-up\"\n      style=\"--order: 3\"\n      [class.red]=\"emailErr || emailErr2\"\n      type=\"email\"\n      placeholder=\"Email\"\n      formControlName=\"email\">\n    <input\n      class=\"password-input float-up\"\n      style=\"--order: 4\"\n      [class.red]=\"passErr\"\n      type=\"password\"\n      placeholder=\"Password\"\n      formControlName=\"pass\">\n    <a\n      class=\"forgot-link float-up\"\n      style=\"--order: 5\"\n      routerLink=\"/recover\">Forgot your password?</a>\n    <button\n      class=\"confirm-button float-up\"\n      style=\"--order: 6\"\n      (click)=\"login($event)\">\n      Sign in\n      <svg *ngIf=\"loading\" class=\"center\" width=\"1.2em\" height=\"1.2em\">\n        <circle class=\"loader-circle\"/>\n      </svg>\n    </button>\n  </form>\n</div>\n<div class=\"outer-link-wrap bottom\" style=\"--order: 5\">\n  <p class=\"float-up\">Don't have an account? </p>\n  <a\n    class=\"float-up\"\n    routerLink=\"/new\">Sign up now.</a>\n</div>\n<app-error *ngIf=\"resErr\" [status]=\"resErr\"></app-error>\n"
+module.exports = "<div *ngIf=\"loginPage\" class=\"box link-bottom\">\n  <h2 class=\"header\">\n    <span class=\"mask-span\">\n      <span class=\"word\" style=\"--order: 0\">Sign </span>\n    </span>\n    <span class=\"mask-span\">\n      <span class=\"word\" style=\"--order: 1\">in</span>\n    </span>\n  </h2>\n  <p class=\"message float-up\" style=\"--order: 2\">{{mes}}</p>\n  <form [formGroup]=\"userGroup\">\n    <input\n      class=\"email-input float-up\"\n      style=\"--order: 3\"\n      [class.red]=\"emailErr || emailErr2\"\n      type=\"email\"\n      placeholder=\"Email\"\n      formControlName=\"email\">\n    <input\n      class=\"password-input float-up\"\n      style=\"--order: 4\"\n      [class.red]=\"passErr\"\n      type=\"password\"\n      placeholder=\"Password\"\n      formControlName=\"pass\">\n    <a\n      class=\"forgot-link float-up\"\n      style=\"--order: 5\"\n      routerLink=\"/recover\">Forgot your password?</a>\n    <button\n      class=\"confirm-button float-up\"\n      style=\"--order: 6\"\n      (click)=\"login($event)\">\n      Sign in\n      <svg *ngIf=\"loading\" class=\"center\" width=\"1.2em\" height=\"1.2em\">\n        <circle class=\"loader-circle\"/>\n      </svg>\n    </button>\n  </form>\n  <div class=\"outer-link-wrap bottom\" style=\"--order: 5\">\n    <p class=\"float-up\">Don't have an account? </p>\n    <a\n      class=\"float-up\"\n      routerLink=\"/new\">Sign up now.</a>\n  </div>\n</div>\n<app-error *ngIf=\"resErr\" [status]=\"resErr\"></app-error>\n"
 
 /***/ }),
 
@@ -581,7 +581,6 @@ var LoginComponent = /** @class */ (function () {
     LoginComponent.prototype.login = function ($event) {
         var _this = this;
         if (this.userGroup.valid) {
-            console.log('hey');
             var user = this.userGroup.value;
             var button = $event.currentTarget;
             button.classList.add('loading');
@@ -874,10 +873,10 @@ var RecoverComponent = /** @class */ (function () {
                 _this.loading = false;
                 if (_this.res.userExists) {
                     _this.inputPage = false;
-                    _this.doneMes = ['Done! If you have an account with us, you should receive an email containing a link to reset your password.'];
+                    _this.doneMes = ['Done! You should receive an email containing a link to reset your password soon.'];
                 }
                 else {
-                    _this.mes = 'This is not a registered account.';
+                    _this.mes = "Oops! We couldn't find an account associated with this email.";
                 }
             }, function (err) {
                 _this.inputPage = false;

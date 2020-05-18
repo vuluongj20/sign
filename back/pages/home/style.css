@@ -1,14 +1,14 @@
 @font-face {
   font-family: 'GT Haptik';
   font-weight: '700';
-  src: url('/assets/GTHaptik-Bold.woff2') format('woff2'),
-    url('/assets/GTHaptik-Bold.woff') format('woff');
+  src: url('https://res.cloudinary.com/vuluongj20/raw/upload/v1589741562/fonts/GTHaptik-Bold_lyvi6r.woff2') format('woff2'),
+    url('https://res.cloudinary.com/vuluongj20/raw/upload/v1589741562/fonts/GTHaptik-Bold_qaex3v.woff') format('woff');
 }
 @font-face {
   font-family: 'GT Haptik';
   font-weight: '400';
-  src: url('/assets/GTHaptik-Regular.woff2') format('woff2'),
-    url('/assets/GTHaptik-Regular.woff') format('woff');
+  src: url('https://res.cloudinary.com/vuluongj20/raw/upload/v1589741562/fonts/GTHaptik-Regular_nkaujo.woff2') format('woff2'),
+    url('https://res.cloudinary.com/vuluongj20/raw/upload/v1589741563/fonts/GTHaptik-Regular_lt4gdn.woff') format('woff');
 }
 * {
   padding: 0;
@@ -32,12 +32,13 @@ body {
   --dark-blue: #8767CB;
   --dark-green: #67CBA6;
   --dark-yellow: #CBAB67;
+  --hover: #CC9E33;
 
 }
 
 /* Text */
 p, a {
-  font-family: 'GT Haptik', 'Lucida Grande', sans-serif;
+  font-family: 'GT Haptik', 'Arial', sans-serif;
   font-weight: 400;
   line-height: 1.5;
 }
@@ -50,9 +51,8 @@ a {
   transition: color 160ms;
 }
 h1 {
-  font-family: 'GT Haptik';
+  font-family: 'GT Haptik', 'Arial', sans-serif;
   font-weight: 700;
-  font-size: 3.2em;
   color: var(--dark);
   margin-bottom: 0.4em;
 }
@@ -107,17 +107,19 @@ h1 {
   position: relative;
   padding: 0.4em 1.6em;
   margin: 0.8em 0;
+  border-radius: 0.4em;
   background-color: var(--dark);
   color: var(--inverted-dark);
   font-size: 1em;
-  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-decoration: none;
   border: none;
   cursor: pointer;
   transition: background-color 160ms ease;
 }
 .button:hover {
-  background-color: #111111;
+  background-color: var(--hover);
 }
 
 
@@ -175,11 +177,17 @@ p>span {
   position: absolute;
   top: 0;
   left: 0;
+  width: 45vw;
+  height: 30vw;
+  overflow: hidden;
 }
 .shapes-wrap.bottom-right {
   position: absolute;
   bottom: 0;
   right: 0;
+  width: 30vw;
+  height: 15vw;
+  overflow: hidden;
 }
 .circle {
   border-radius: 50%;
