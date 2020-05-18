@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 mongoose.set('useCreateIndex', true)
 mongoose.connect(
-  'enter link to database here',
+  'mongodb+srv://vuluong:AQ1M3g2Nia8qity8@cluster0-itsai.mongodb.net/test?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true

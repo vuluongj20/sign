@@ -137,7 +137,6 @@ button.loading:hover {
   box-sizing: border-box;
   stroke: var(--inverted-dark);
   stroke-width: 1.4px;
-  r: calc(0.5em - 2.8px);
   transform: translate(0.6em, 0.6em) rotate(-90deg);
   fill: none;
   stroke-dasharray: 75.3984;
