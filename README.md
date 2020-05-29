@@ -1,7 +1,7 @@
 # Sign
 Sign is a reusable login system that takes advantage of JWT authentication and Nodemailer to create a versatile, full-featured login page.
 
-![Sign](images/login.png)
+![Sign](feature.jpg)
 
 ## Features
 The back end uses Express.js and three libraries:

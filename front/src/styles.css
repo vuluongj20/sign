@@ -199,7 +199,8 @@ button.loading {
   margin: 0 auto 0.8em;
 }
 .confirm-button {
-  margin-top: 0.8em;
+  display: block;
+  margin: 0.8em auto;
 }
 .outer-link-wrap {
   position: absolute;
